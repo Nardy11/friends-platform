@@ -20,8 +20,12 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-        env:
-          GITHUB_PAGES: 'true'
+      - name: Verify static export entry points
+        run: |
+          test -s out/index.html
+          test -s out/login/index.html
+          test -s out/signup/index.html
+          test -d out/_next
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
