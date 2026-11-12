@@ -578,3 +578,33 @@
   .sidebar{display:none!important}
   .main{grid-column:auto}
 }
+
+
+/* Hero artwork stays completely still. Only the four independent UI badges float. */
+.friends-showcase .showcase-hero-photo .showcase-hero-artwork{
+  animation:none!important;transform:none!important;will-change:auto;
+}
+.friends-showcase .showcase-hero-photo .hero-float-card{
+  position:absolute;z-index:4;display:inline-flex;align-items:center;gap:9px;
+  padding:10px 17px;border:1px solid #edaa9a;border-radius:999px;
+  background:rgba(35,27,35,.92);color:#fff3ef;
+  box-shadow:0 5px 22px #0005,inset 0 0 0 1px #ffffff12;
+  font:700 12px Manrope,sans-serif;white-space:nowrap;
+  pointer-events:none;backdrop-filter:blur(8px);
+}
+.friends-showcase .showcase-hero-photo .hero-float-card>span{color:#ed927f;font-size:17px;line-height:1}
+.friends-showcase .hero-float-volunteer{left:12%;top:9%;animation:heroBadgeFloatA 4.2s ease-in-out infinite}
+.friends-showcase .hero-float-meet{right:13%;top:5%;animation:heroBadgeFloatB 4.8s ease-in-out infinite}
+.friends-showcase .hero-float-care{left:7%;bottom:13%;animation:heroBadgeFloatB 4.5s ease-in-out infinite}
+.friends-showcase .hero-float-belong{right:7%;bottom:10%;animation:heroBadgeFloatA 5s ease-in-out infinite}
+@keyframes heroBadgeFloatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes heroBadgeFloatB{0%,100%{transform:translateY(-3px)}50%{transform:translateY(7px)}}
+@media(max-width:620px){
+ .friends-showcase .showcase-hero-photo .hero-float-card{font-size:9px;padding:7px 10px;gap:5px}
+ .friends-showcase .showcase-hero-photo .hero-float-card>span{font-size:13px}
+ .friends-showcase .hero-float-volunteer{left:3%;top:8%}
+ .friends-showcase .hero-float-meet{right:3%;top:4%}
+ .friends-showcase .hero-float-care{left:2%;bottom:10%}
+ .friends-showcase .hero-float-belong{right:2%;bottom:8%}
+}
+@media(prefers-reduced-motion:reduce){.friends-showcase .showcase-hero-photo .hero-float-card{animation:none!important}}
