@@ -638,3 +638,70 @@
 
 /* The hero artwork is a still image; only separate UI accents may animate. */
 .showcase-hero-photo img{animation:none!important;transform:none!important;will-change:auto!important}
+
+
+/* Light theme contrast refinements: deepen surfaces and accents while keeping
+   text on dark controls white for accessible contrast. */
+:root[data-theme='light'] .friends-showcase{
+  --show-bg:#eee3df;--show-panel:#fff8f4;--show-panel2:#ead7d1;
+  --show-line:#d6bdb6;--show-ink:#241d24;--show-muted:#5e515b;
+  --show-coral:#b95749;
+}
+:root[data-theme='light'] .friends-showcase .showcase-kicker{color:#8f453d}
+:root[data-theme='light'] .friends-showcase .showcase-nav nav a,
+:root[data-theme='light'] .friends-showcase .showcase-lead,
+:root[data-theme='light'] .friends-showcase .showcase-section-heading>p:last-child,
+:root[data-theme='light'] .friends-showcase .why-showcase-grid p,
+:root[data-theme='light'] .friends-showcase .testimonial-copy p{color:#51434d}
+:root[data-theme='light'] .friends-showcase .showcase-login,
+:root[data-theme='light'] .friends-showcase .showcase-watch{color:#30232d;border-color:#a98b88}
+:root[data-theme='light'] .friends-showcase .showcase-join{background:#8f493f;color:#fff}
+:root[data-theme='light'] .friends-showcase .showcase-stats,
+:root[data-theme='light'] .friends-showcase .showcase-testimonial{background:linear-gradient(110deg,#f7eae5,#e7d2cd)!important;border-color:#d5b9b2!important}
+:root[data-theme='light'] .friends-showcase .why-showcase-grid article{background:linear-gradient(145deg,#fff8f4,#e9d8d2)!important;border-color:#d7bcb5!important}
+:root[data-theme='light'] .friends-showcase .showcase-testimonial>button{background:#dfc5be;color:#342630}
+:root[data-theme='light'] .friends-showcase .showcase-stats strong,
+:root[data-theme='light'] .friends-showcase .showcase-section-heading h2,
+:root[data-theme='light'] .friends-showcase .how-showcase-steps h3,
+:root[data-theme='light'] .friends-showcase .testimonial-copy strong{color:#241d24}
+:root[data-theme='light'] .friends-showcase .showcase-stats small,
+:root[data-theme='light'] .friends-showcase .testimonial-copy small{color:#5e515b}
+
+/* Every navigational/action control exposes an actual clickable affordance. */
+.friends-showcase a,.friends-showcase button,
+.auth-page a,.auth-page button{cursor:pointer}
+.showcase-login:hover,.showcase-join:hover,.showcase-watch:hover,
+.auth-page .btn:hover{transform:translateY(-1px);transition:transform .18s ease,filter .18s ease,background-color .18s ease}
+.friends-showcase .showcase-nav-actions a:focus-visible,
+.friends-showcase .showcase-ctas a:focus-visible,
+.auth-page button:focus-visible,.auth-page a:focus-visible{
+  outline:3px solid var(--coral);outline-offset:3px;
+}
+
+/* App notification menu stays a compact anchored popover, never a full-screen panel. */
+.notification-popover{
+  position:absolute!important;top:calc(100% + 10px)!important;right:0!important;left:auto!important;
+  width:min(350px,calc(100vw - 28px))!important;max-height:min(430px,70vh)!important;
+  overflow:auto!important;border-radius:16px!important;z-index:1500!important;
+  box-shadow:0 18px 55px #0003!important;
+}
+@media(max-width:650px){
+  .notification-popover{position:fixed!important;top:66px!important;right:12px!important;left:auto!important;width:min(340px,calc(100vw - 24px))!important;max-height:70vh!important}
+}
+
+/* Icon marks should show their glyph only, not a square tile. */
+.friends-app .brand-mark,.friends-app .dash-brand .brand-mark,
+.friends-app .app-icon,.friends-app .sidebar-brand-icon{
+  background:transparent!important;box-shadow:none!important;border:0!important;border-radius:0!important;
+}
+
+/* Native confirmation prompt for destructive actions should be added in app logic;
+   these styles are shared by any existing custom confirmation surface. */
+.app-confirm-backdrop{position:fixed;inset:0;z-index:2200;background:#100d13b8;display:grid;place-items:center;padding:18px}
+.app-confirm-dialog{width:min(390px,100%);background:var(--panel,#2d2330);color:var(--text,#fff);border:1px solid var(--line,#715b69);border-radius:18px;padding:22px;box-shadow:0 24px 70px #0007}
+.app-confirm-dialog h2{font:800 19px Manrope;margin:0 0 8px}
+.app-confirm-dialog p{font-size:13px;line-height:1.55;color:var(--muted,#bbaeb6);margin:0}
+.app-confirm-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:20px}
+.app-confirm-actions button{cursor:pointer;border-radius:10px;padding:10px 14px;font-weight:800;font-size:12px}
+.app-confirm-cancel{background:transparent;border:1px solid var(--line);color:inherit}
+.app-confirm-danger{background:#b64f48;border:1px solid #b64f48;color:#fff}
