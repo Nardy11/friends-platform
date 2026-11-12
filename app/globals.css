@@ -495,3 +495,13 @@
 :root[data-theme='light'] .why-showcase-grid article{background:linear-gradient(145deg,#fffaf7,#f0e3df)!important;border-color:#e4d1cc!important}
 :root[data-theme='light'] .showcase-testimonial>button{background:#ead8d4;color:#493943}
 :root[data-theme='light'] .showcase-final{border-color:#e1cfca}
+
+
+/* Navigation and auth controls must remain above decorative hero layers. */
+.showcase-nav{position:relative;z-index:100;isolation:isolate}
+.showcase-nav-actions{position:relative;z-index:101;display:flex;align-items:center;gap:10px}
+.showcase-nav-actions>a,.showcase-nav-actions>button{position:relative;z-index:102;pointer-events:auto}
+.showcase-login,.showcase-join{cursor:pointer;pointer-events:auto}
+.auth-top-actions{position:relative;z-index:100;pointer-events:auto}
+.auth-top-actions .auth-brand,.auth-top-actions .theme-toggle{position:relative;z-index:101;pointer-events:auto}
+.auth-top-actions .theme-toggle{flex:0 0 auto}
