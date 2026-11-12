@@ -91,7 +91,14 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-
 @media(max-width:760px){.picker-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.saved-grid,.host-grid{grid-template-columns:1fr}.slot-list{grid-template-columns:1fr 1fr}}
 
 <style>
-.theme-switch{margin-left:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;padding:10px 13px;font-size:11px;font-weight:800;cursor:pointer}
+.nav-badge{margin-left:auto;min-width:19px;height:19px;padding:0 5px;border-radius:99px;background:var(--coral);color:#201719;display:grid;place-items:center;font-size:10px;font-weight:800}
+.theme-toggle{display:flex;flex-direction:row;gap:5px;width:58px}
+.theme-toggle .icon{font-size:15px}
+.theme-toggle .icon-sun{color:var(--gold)}
+.theme-toggle .icon-moon{color:var(--muted)}
+:root[data-friends-theme="light"] .theme-toggle .icon-sun{opacity:.4}
+:root[data-friends-theme="light"] .theme-toggle .icon-moon{color:var(--coral)}
+:root:not([data-friends-theme="light"]) .theme-toggle .icon-moon{opacity:.4}
 :root[data-friends-theme="light"]{--bg:#f5f1ed;--panel:#fffaf6;--panel2:#eee8e3;--panel3:#e4dcd6;--line:#ded5ce;--ink:#28242a;--muted:#77717a;--soft:#554f58}
 :root[data-friends-theme="light"] body{background:var(--bg);color:var(--ink)}
 :root[data-friends-theme="light"] .sidebar{background:#fffaf6;border-right-color:#ded5ce}
@@ -117,7 +124,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-
  <nav class="nav" aria-label="Main navigation">
   <button class="active" data-page="home"><i class="icon icon-house"></i>Home</button>
   <button data-page="explore"><i class="icon icon-compass"></i>Explore</button>
-
+  <button type="button" onclick="openNotifications()"><i class="icon icon-bell"></i>Notifications <span class="nav-badge">3</span></button>
   <button data-page="chats"><i class="icon icon-message-circle"></i>Chats <span id="chatBadge" style="margin-left:auto;color:var(--coral);font-size:11px"></span></button>
   <button data-page="you"><i class="icon icon-user-round"></i>You</button>
   <button data-page="saved"><i class="icon icon-bookmark"></i>Saved for later</button>
@@ -130,7 +137,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-
  </div>
 </aside>
 <main class="main">
- <div class="topbar"><div class="mobile-brand"><div class="brand-mark" aria-label="Friends logo"><svg viewBox="0 0 40 40" width="25" height="25" aria-hidden="true"><path d="M11 28.5c0-7.8 5.2-13.8 13.4-13.8 2.1 0 4.1.5 5.8 1.4M29 11.5c-1.8-1.2-4-1.8-6.4-1.8-8.1 0-13.8 6.1-13.8 14.2 0 3.3 1.1 6.1 3.1 8.2" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M17 22.2c2.2-2.3 5.8-2.3 8 0l4.6 4.7-4.6 4.6-4-4-4 4-4.6-4.6 4.6-4.7Z" fill="currentColor"/></svg></div>friends</div><div class="crumb">Thursday, 12 November <span style="color:#615b66"> / </span> Your community</div><div class="top-actions"><button class="icon-btn" onclick="openNotifications()" aria-label="Notifications"><i class="icon icon-bell"></i><span class="dot"></span></button><button class="icon-btn" aria-label="Notifications" onclick="toast('You are all caught up.')"><i class="icon icon-bell"></i><span class="dot"></span></button><button class="icon-btn" aria-label="Create event" onclick="openCreate()"><i class="icon icon-plus"></i></button></div></div>
+ <div class="topbar"><div class="mobile-brand"><div class="brand-mark" aria-label="Friends logo"><svg viewBox="0 0 40 40" width="25" height="25" aria-hidden="true"><path d="M11 28.5c0-7.8 5.2-13.8 13.4-13.8 2.1 0 4.1.5 5.8 1.4M29 11.5c-1.8-1.2-4-1.8-6.4-1.8-8.1 0-13.8 6.1-13.8 14.2 0 3.3 1.1 6.1 3.1 8.2" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M17 22.2c2.2-2.3 5.8-2.3 8 0l4.6 4.7-4.6 4.6-4-4-4 4-4.6-4.6 4.6-4.7Z" fill="currentColor"/></svg></div>friends</div><div class="crumb">Thursday, 12 November <span style="color:#615b66"> / </span> Your community</div><div class="top-actions"><button class="icon-btn" aria-label="Search opportunities" onclick="go('explore')"><i class="icon icon-search"></i></button><button class="icon-btn" onclick="openNotifications()" aria-label="Notifications"><i class="icon icon-bell"></i><span class="dot"></span></button><button class="icon-btn" aria-label="Create event" onclick="openCreate()"><i class="icon icon-plus"></i></button><button class="icon-btn theme-toggle" id="friendsThemeSwitch" type="button" aria-label="Switch theme" onclick="toggleFriendsTheme()"><i class="icon icon-sun"></i><i class="icon icon-moon"></i></button></div></div>
 
  <section class="page active" id="page-home">
   <div class="hero">
@@ -448,7 +455,8 @@ function persistFriendsState(){try{localStorage.setItem('friends-app-state',JSON
 try{const state=JSON.parse(localStorage.getItem('friends-app-state')||'null');if(state){if(Array.isArray(state.savedIds))savedIds=new Set(state.savedIds);if(Array.isArray(state.requests))requests=state.requests;if(Array.isArray(state.events))events=state.events;if(state.profileData)profileData={...profileData,...state.profileData};verified=state.verified===true;}}catch(e){}
 for(const fn of ['saveForLater','submitRequest','decideApplicant','cancelBooking','withdrawRequest','publishCommunityEvent','completeVerification','saveProfileDetails','setAutoAccept']){const original=window[fn];if(typeof original==='function'){window[fn]=function(...args){const out=original.apply(this,args);persistFriendsState();return out;};}}
 /* Theme switch keeps the supplied charcoal/coral design as the default and offers a coordinated light palette. */
-(function(){const top=document.querySelector('.topbar');if(!top||document.getElementById('friendsThemeSwitch'))return;const saved=localStorage.getItem('friends-dashboard-theme')||'dark';document.documentElement.dataset.friendsTheme=saved;top.insertAdjacentHTML('beforeend','<button id="friendsThemeSwitch" class="theme-switch" type="button" aria-label="Switch colour theme">'+(saved==='dark'?'☼ Light mode':'☾ Dark mode')+'</button>');document.getElementById('friendsThemeSwitch').addEventListener('click',()=>{const next=document.documentElement.dataset.friendsTheme==='dark'?'light':'dark';document.documentElement.dataset.friendsTheme=next;localStorage.setItem('friends-dashboard-theme',next);document.getElementById('friendsThemeSwitch').textContent=next==='dark'?'☼ Light mode':'☾ Dark mode';});})();
+(function(){const saved=localStorage.getItem('friends-dashboard-theme')||'dark';document.documentElement.dataset.friendsTheme=saved;})();
+function toggleFriendsTheme(){const next=document.documentElement.dataset.friendsTheme==='dark'?'light':'dark';document.documentElement.dataset.friendsTheme=next;localStorage.setItem('friends-dashboard-theme',next);}
 renderHome();renderListings();renderSaved();renderHost();renderCalendar();renderPlans();renderProfile();});
 
 </script>
