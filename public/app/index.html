@@ -350,6 +350,94 @@ h1{font-size:clamp(27px,3vw,36px);letter-spacing:-1px}h2{font-size:20px;letter-s
 :root[data-theme='light'] .field .fs-trigger{background:#fff;border-color:var(--line)}
 :root[data-theme='light'] .fs-list{background:var(--panel);box-shadow:0 18px 44px #4a2f2a2e}
 @media(max-width:430px){.toolbar .fs-select{flex:1;min-width:0}}
+
+/* ===== Friends v6: applicant profile sheet, accept/decline colours, custom sliders, calendar beside plans ===== */
+:root{--ok:#3f8a5a;--ok-soft:#24382b;--ok-ink:#a9dcb8;--no:#c2554b;--no-soft:#3a2224;--no-ink:#f0a49b}
+:root[data-theme='light']{--ok:#2f7a4b;--ok-soft:#dcefe2;--ok-ink:#21593a;--no:#b03f37;--no-soft:#f8dedb;--no-ink:#8e2c22}
+.btn.accept{background:var(--ok);color:#fff;border:1px solid var(--ok)}
+.btn.accept:hover{background:color-mix(in srgb,var(--ok) 85%,#000)}
+.btn.decline{background:transparent;color:var(--no-ink);border:1px solid color-mix(in srgb,var(--no) 70%,transparent)}
+.btn.decline:hover{background:var(--no);color:#fff;border-color:var(--no)}
+.status-tag.accepted{background:var(--ok-soft);color:var(--ok-ink)}
+.status-tag.declined{background:var(--no-soft);color:var(--no-ink)}
+.status-tag.pending{background:var(--panel3);color:var(--soft)}
+.applicant-card{grid-template-columns:52px minmax(0,1fr) auto;align-items:center;gap:14px}
+.applicant-card img{width:52px;height:52px}
+.applicant-card .applicant-actions{grid-column:auto;justify-content:flex-end}
+.applicant-name{border:0;background:none;padding:0;color:inherit;font:600 14px Manrope,sans-serif;cursor:pointer;text-align:left}
+.applicant-name:hover{color:var(--coral)}
+@media(max-width:620px){.applicant-card{grid-template-columns:48px minmax(0,1fr)}.applicant-card .applicant-actions{grid-column:1/-1}}
+
+/* Applicant profile sheet */
+.applicant-sheet{position:relative;width:min(520px,100%);padding:0;overflow:auto}
+.ap-cover{height:86px;background:radial-gradient(ellipse at 20% 0%,color-mix(in srgb,var(--coral) 45%,transparent),transparent 60%),linear-gradient(120deg,var(--panel3),var(--panel2))}
+.ap-close{position:absolute;right:14px;top:14px}
+.ap-body{padding:0 24px 22px}
+.ap-head{display:flex;gap:16px;align-items:flex-end;margin-top:-38px}
+.ap-head img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:4px solid var(--panel);flex:none}
+.ap-head h2{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 3px;font-size:21px}
+.ap-head p{margin:0;color:var(--muted);font-size:12.5px}
+.ap-verified{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:99px;background:color-mix(in srgb,var(--coral) 16%,transparent);color:var(--coral);font:600 10.5px 'DM Sans',sans-serif;letter-spacing:0}
+.ap-verified .icon{font-size:12px}
+.ap-request{margin:14px 0 0;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+.ap-stats{display:grid;grid-template-columns:repeat(3,1fr);margin:18px 0 4px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ap-stats div{padding:11px 12px;border-right:1px solid var(--line)}.ap-stats div:last-child{border:0}
+.ap-stats b{display:block;font:700 16px Manrope,sans-serif}
+.ap-stats span{font-size:11px;color:var(--muted)}
+.ap-section{padding-top:16px}
+.ap-section h3{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:600;margin:0 0 8px}
+.ap-section p{margin:0;font-size:13.5px;line-height:1.6}
+.ap-chips{display:flex;flex-wrap:wrap;gap:6px}
+.ap-chips span{padding:5px 11px;border-radius:99px;border:1px solid var(--line);font-size:12px;color:var(--soft)}
+.ap-history{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ap-history li{display:flex;align-items:center;gap:12px;padding:9px 11px;border-radius:12px;background:var(--panel2)}
+.ap-date{flex:none;width:58px;font-size:11px;color:var(--coral);font-weight:600}
+.ap-history b{display:block;font-size:13px;font-weight:600}
+.ap-history small{font-size:11px;color:var(--muted)}
+.ap-review{margin:0 0 8px;padding:10px 12px;border-left:2px solid var(--coral);background:var(--panel2);border-radius:0 12px 12px 0;font-size:13px;line-height:1.55}
+.ap-review cite{display:block;margin-top:4px;font-style:normal;font-size:11px;color:var(--muted)}
+.ap-actions{position:sticky;bottom:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 24px;margin-top:18px;background:var(--panel);border-top:1px solid var(--line)}
+
+/* Custom switch */
+.toggle{appearance:none;-webkit-appearance:none;width:42px;height:24px;flex:none;border-radius:99px;background:var(--panel3);border:1px solid var(--line);position:relative;cursor:pointer;transition:background .2s,border-color .2s}
+.toggle:before{content:"";position:absolute;width:18px;height:18px;left:2px;top:2px;border-radius:50%;background:#fff;box-shadow:0 1px 4px #0005;transition:transform .22s cubic-bezier(.16,1,.3,1)}
+.toggle:checked{background:var(--coral);border-color:var(--coral)}
+.toggle:checked:before{left:2px;transform:translateX(18px)}
+.toggle:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+:root[data-theme='light'] .toggle{background:var(--panel3)}
+:root[data-theme='light'] .toggle:checked{background:var(--coral)}
+
+/* Custom range slider */
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;background:linear-gradient(90deg,var(--coral) var(--pct,17%),var(--panel3) var(--pct,17%));outline:none;cursor:pointer;margin:12px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--coral);box-shadow:0 2px 10px #0006;transition:transform .15s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.08)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--coral);box-shadow:0 2px 10px #0006}
+input[type=range]::-moz-range-track{background:transparent}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 5px color-mix(in srgb,var(--coral) 30%,transparent)}
+.range-scale{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+
+/* My plans: compact calendar beside the plan list */
+.plans-layout{display:grid;grid-template-columns:minmax(290px,340px) minmax(0,1fr);gap:22px;align-items:start;margin-top:22px}
+.plans-layout .calendar-plan-panel{margin:0;max-width:none;padding:16px;position:sticky;top:20px}
+.plans-layout .date-nav{margin:0 0 10px}
+.plans-layout .date-nav h2{font-size:15px}
+.plans-layout .date-nav button{width:32px;height:32px;padding:0;display:grid;place-items:center;border-radius:9px;font-size:15px}
+.plans-layout .calendar-grid{gap:2px}
+.plans-layout .cal-head{font-size:10px;padding:4px 0}
+.plans-layout .cal-day{min-height:36px;padding:0;border:0;background:transparent;border-radius:9px;font-size:12.5px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.plans-layout .cal-day:hover{background:var(--panel3)}
+.plans-layout .cal-day.has-plan{font-weight:600}
+.plans-layout .cal-day.has-plan:after{margin:2px auto 0}
+.plans-layout .cal-day.is-today:not(.selected){box-shadow:inset 0 0 0 1px var(--coral)}
+.plans-layout .cal-day.selected{background:var(--coral);color:#fff}
+.plans-layout .calendar-filter-bar{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:8px}
+.plans-col .section-head{margin:0 0 12px}
+.plans-col .plan-row{margin-bottom:8px}
+@media(max-width:980px){.plans-layout{grid-template-columns:1fr}.plans-layout .calendar-plan-panel{position:static;max-width:420px}}
+:root[data-theme='light'] .btn.accept{background:var(--ok);color:#fff;border-color:var(--ok)}
+:root[data-theme='light'] .btn.accept:hover{background:#246a3e}
+:root[data-theme='light'] .btn.decline{background:transparent;color:var(--no);border-color:var(--no)}
+:root[data-theme='light'] .btn.decline:hover{background:var(--no);color:#fff}
 </style>
 </head>
 <body>
@@ -643,6 +731,7 @@ function renderListings(){let a=items.filter(x=>x.kind==='animals'&&(animalType=
 document.addEventListener('DOMContentLoaded',()=>{let theme='dark';try{theme=localStorage.getItem('friends-theme')||'dark';const read=JSON.parse(localStorage.getItem('friends-notification-read')||'null');if(Array.isArray(read))read.forEach((v,i)=>{if(notificationState[i])notificationState[i].unread=!v;});}catch(e){}document.documentElement.dataset.theme=theme;const icon=$('themeIcon'),btn=$('themeToggle');if(icon)icon.className='icon '+(theme==='light'?'icon-moon':'icon-sun');if(btn)btn.setAttribute('aria-label',theme==='light'?'Switch to dark mode':'Switch to light mode');updateNotificationIndicators();document.querySelectorAll('input[type="file"]').forEach(input=>input.addEventListener('change',()=>{const box=input.closest('.file-drop');if(!box)return;const file=input.files&&input.files[0];box.classList.toggle('has-file',!!file);let status=box.querySelector('.file-status');if(!status){status=document.createElement('span');status.className='file-status';input.insertAdjacentElement('afterend',status);}status.textContent=file?file.name+' · '+(file.size/1024/1024).toFixed(2)+' MB':'No file selected';}));renderHome();renderListings();renderSaved();renderHost();renderCalendar();renderPlans();renderProfile();});
 
 </script>
+<div class="modal-backdrop" id="applicantModal" role="dialog" aria-modal="true" aria-labelledby="apName"><div class="modal applicant-sheet" id="applicantSheet"></div></div>
 <div class="confirm-backdrop" id="confirmDialog" hidden><div class="confirm-card" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmBody"><span class="confirm-icon"><i class="icon icon-triangle-alert" id="confirmIcon"></i></span><h2 id="confirmTitle"></h2><p id="confirmBody"></p><div class="confirm-actions"><button type="button" class="btn secondary" id="confirmCancel">Cancel</button><button type="button" class="btn danger" id="confirmOk">Yes, continue</button></div></div></div>
 <script>
 /* ===== Friends v4: anchored notifications, confirmations, state reflected immediately ===== */
@@ -793,6 +882,65 @@ document.querySelectorAll('select').forEach(enhanceSelect);
 document.addEventListener('pointerdown',e=>{if(!e.target.closest('.fs-select'))closeAllSelects();});
 document.addEventListener('reset',()=>setTimeout(syncSelects),true);
 const baseOpenModal=openModal;openModal=function(id){baseOpenModal(id);syncSelects();};
+
+
+/* ===== Friends v6: applicant profiles, accept/decline, sliders, calendar layout ===== */
+const applicantDetails=[
+ {area:'Maadi',memberSince:'Mar 2025',attended:3,attendance:'100%',verified:true,interests:['Food & coffee','Art & culture','Board games'],history:[{date:'1 Nov',name:'Pottery, no experience needed',type:'Arts & culture'},{date:'18 Oct',name:'Dinner with new faces',type:'Food & coffee'},{date:'27 Sep',name:'Sunday garden hangout',type:'Hangouts'}],reviews:[{by:'Mariam, event host',text:'Arrived on time and made the quieter people at the table feel included.'}]},
+ {area:'Nasr City',memberSince:'Jan 2025',attended:5,attendance:'92%',verified:true,interests:['Outdoor','Volunteering','Sports & fitness'],history:[{date:'8 Nov',name:'Hope Tails Rescue visit',type:'Volunteer visit'},{date:'25 Oct',name:'Walk, talk & coffee',type:'Outdoor'},{date:'11 Oct',name:'First time on ice',type:'Sports'}],reviews:[{by:'Karim, event host',text:'Helped set up and stayed to clean. Easy to plan with.'},{by:'Hope Tails Rescue',text:'Calm and patient with the dogs.'}]},
+ {area:'Zamalek',memberSince:'Oct 2026',attended:1,attendance:'100%',verified:true,interests:['Art & culture','Food & coffee','Music'],history:[{date:'31 Oct',name:'Rooftop birthday gathering',type:'Parties'}],reviews:[]}
+];
+demoApplicants.forEach((a,i)=>Object.assign(a,applicantDetails[i]||{}));
+
+function decisionTag(d){return d?`<span class="status-tag ${d}">${d==='accepted'?'Accepted':'Declined'}</span>`:'';}
+function viewApplicants(id){
+ const e=getItem(id);if(!e)return;activeHostEvent=id;renderHost();
+ $('applicantPanel').innerHTML=`<div class="section-head"><div><h2>Applicants for ${esc(e.name)}</h2><p>Open a profile to see their activity and host reviews before deciding.</p></div><span class="status-tag">${e.autoAccept?'Auto-accept on':'Manual review'}</span></div>${demoApplicants.map((a,i)=>{const d=applicantDecisions[decisionKey(id,i)];return `<div class="applicant-card${d?' is-'+d:''}"><img src="${a.photo}" alt="${esc(a.name)}"><div><button type="button" class="applicant-name" onclick="viewApplicantProfile(${i})">${esc(a.name)}</button><p class="muted" style="font-size:11.5px;margin:3px 0">${a.age} · ${esc(a.gender)} · ${a.attended} ${a.attended===1?'event':'events'} attended</p><button class="text-link" onclick="viewApplicantProfile(${i})">View profile</button></div><div class="applicant-actions">${d?decisionTag(d):`<button class="btn small decline" onclick="decideApplicant('${id}',${i},false)">Decline</button><button class="btn small accept" onclick="decideApplicant('${id}',${i},true)">Accept</button>`}</div></div>`;}).join('')}`;
+}
+function viewApplicantProfile(i){
+ const a=demoApplicants[i];if(!a)return;const id=activeHostEvent,e=id?getItem(id):null,d=id?applicantDecisions[decisionKey(id,i)]:null;
+ $('applicantSheet').innerHTML=`<div class="ap-cover"></div><button class="close ap-close" type="button" onclick="closeModal('applicantModal')" aria-label="Close profile"><i class="icon icon-x"></i></button>
+ <div class="ap-body">
+  <div class="ap-head"><img src="${a.photo}" alt=""><div><h2 id="apName">${esc(a.name)}${a.verified?'<span class="ap-verified"><i class="icon icon-badge-check" aria-hidden="true"></i>Verified</span>':''}</h2><p>${a.age} · ${esc(a.gender)} · ${esc(a.education)} · ${esc(a.area||'')}</p></div></div>
+  ${e?`<p class="ap-request">${d?decisionTag(d):'<span class="status-tag pending">Pending</span>'}<span>Request to join ${esc(e.name)}</span></p>`:''}
+  <div class="ap-stats"><div><b>${a.attended}</b><span>${a.attended===1?'event':'events'} attended</span></div><div><b>${esc(a.attendance)}</b><span>showed up</span></div><div><b>${esc(a.memberSince)}</b><span>member since</span></div></div>
+  <div class="ap-section"><h3>About</h3><p>${esc(a.bio)}</p></div>
+  <div class="ap-section"><h3>Interests</h3><div class="ap-chips">${(a.interests||[]).map(x=>`<span>${esc(x)}</span>`).join('')}</div></div>
+  <div class="ap-section"><h3>Recent activity</h3>${(a.history||[]).length?`<ul class="ap-history">${a.history.map(h=>`<li><span class="ap-date">${esc(h.date)}</span><div><b>${esc(h.name)}</b><small>${esc(h.type)}</small></div></li>`).join('')}</ul>`:'<p class="muted">No events yet. This would be their first.</p>'}</div>
+  <div class="ap-section"><h3>What hosts say</h3>${(a.reviews||[]).length?a.reviews.map(r=>`<blockquote class="ap-review">${esc(r.text)}<cite>${esc(r.by)}</cite></blockquote>`).join(''):'<p class="muted">No reviews yet.</p>'}</div>
+ </div>
+ ${e&&!d?`<div class="ap-actions"><button type="button" class="btn decline" onclick="decideApplicant('${id}',${i},false)">Decline</button><button type="button" class="btn accept" onclick="decideApplicant('${id}',${i},true)">Accept</button></div>`:''}`;
+ openModal('applicantModal');$('applicantSheet').scrollTop=0;
+}
+async function decideApplicant(id,i,accept){
+ const a=demoApplicants[i],e=getItem(id);if(!a||!e)return;
+ if(!accept){const ok=await confirmAction({title:`Decline ${a.name}?`,body:`${a.name} will be told their request to join ${e.name} was declined. This cannot be undone.`,confirmLabel:'Yes, decline',icon:'user-x'});if(!ok)return;}
+ else if(e.spots<=0){toast('This event is full. Free a spot before accepting more people.');return;}
+ applicantDecisions[decisionKey(id,i)]=accept?'accepted':'declined';
+ if(accept){e.spots=Math.max(0,e.spots-1);e.going=(e.going||0)+1;}
+ e.applications=pendingApplicants(id);viewApplicants(id);renderListings();
+ if($('applicantModal').classList.contains('open'))viewApplicantProfile(i);
+ toast(a.name+(accept?' accepted.':' declined.'));
+}
+
+$('applicantModal').addEventListener('click',e=>{if(e.target===$('applicantModal'))closeModal('applicantModal');});
+/* Range slider fill follows the value */
+function paintRange(r){const min=+r.min||0,max=+r.max||100;r.style.setProperty('--pct',((r.value-min)/(max-min)*100)+'%');}
+document.querySelectorAll('input[type=range]').forEach(r=>{paintRange(r);r.addEventListener('input',()=>paintRange(r));});
+if($('budgetRange')&&!document.querySelector('#budgetModal .range-scale'))$('budgetRange').insertAdjacentHTML('afterend','<div class="range-scale"><span>Free</span><span>EGP 3,000</span></div>');
+const baseOpenBudget=openBudget;openBudget=function(){$('budgetRange').value=budget;$('budgetDisplay').textContent='EGP '+budget;paintRange($('budgetRange'));baseOpenBudget();};
+
+/* My plans: calendar on the left, plans beside it */
+(function(){
+ const pg=$('page-plans'),cal=pg&&pg.querySelector('.calendar-plan-panel');if(!cal||cal.parentElement.classList.contains('plans-layout'))return;
+ const head=cal.nextElementSibling,list=$('plansList'),grid=document.createElement('div'),col=document.createElement('div');
+ grid.className='plans-layout';col.className='plans-col';cal.parentNode.insertBefore(grid,cal);grid.append(cal,col);col.append(head,list);
+ const nav=cal.querySelectorAll('.date-nav button');
+ if(nav[0])nav[0].innerHTML='<i class="icon icon-chevron-left" aria-hidden="true"></i>';
+ if(nav[1])nav[1].innerHTML='<i class="icon icon-chevron-right" aria-hidden="true"></i>';
+})();
+const baseRenderCalendar=renderCalendar;
+renderCalendar=function(){baseRenderCalendar();const y=calendarCursor.getFullYear(),m=calendarCursor.getMonth();if(y===2026&&m===10){const t=[...document.querySelectorAll('#calendarGrid .cal-day')].find(b=>b.textContent==='12');if(t)t.classList.add('is-today');}};
 
 </script>
 </body>
