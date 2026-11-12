@@ -1,7 +1,7 @@
 'use client';
 import {useMemo,useState} from 'react';
 import Link from 'next/link';
-const checks=[v=>v.length>=8,v=>/[A-Z]/.test(v),v=>/[a-z]/.test(v),v=>/\\d/.test(v),v=>/[^A-Za-z0-9]/.test(v)];
+const checks=[v=>v.length>=8,v=>/[A-Z]/.test(v),v=>/[a-z]/.test(v),v=>/[0-9]/.test(v),v=>/[^A-Za-z0-9]/.test(v)];
 function Eye({show,onClick}){return <button className="eye" type="button" onClick={onClick}>{show?'Hide':'Show'}</button>}
 export function LoginForm(){
  const [email,E]=useState(''),[password,P]=useState(''),[show,S]=useState(false),[error,X]=useState(''),[message,M]=useState('');
