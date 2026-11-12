@@ -90,6 +90,23 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-
 .toggle:checked{background:#9bb89a}.toggle:before{content:"";position:absolute;width:19px;height:19px;border-radius:50%;background:white;left:3px;top:3px;transition:.2s}.toggle:checked:before{left:22px}
 @media(max-width:760px){.picker-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.saved-grid,.host-grid{grid-template-columns:1fr}.slot-list{grid-template-columns:1fr 1fr}}
 
+<style>
+.theme-switch{margin-left:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;padding:10px 13px;font-size:11px;font-weight:800;cursor:pointer}
+:root[data-friends-theme="light"]{--bg:#f5f1ed;--panel:#fffaf6;--panel2:#eee8e3;--panel3:#e4dcd6;--line:#ded5ce;--ink:#28242a;--muted:#77717a;--soft:#554f58}
+:root[data-friends-theme="light"] body{background:var(--bg);color:var(--ink)}
+:root[data-friends-theme="light"] .sidebar{background:#fffaf6;border-right-color:#ded5ce}
+:root[data-friends-theme="light"] .nav button{color:#706a73}
+:root[data-friends-theme="light"] .nav button:hover,:root[data-friends-theme="light"] .nav button.active{background:#eee7e2;color:#28242a}
+:root[data-friends-theme="light"] .side-note,:root[data-friends-theme="light"] .panel,:root[data-friends-theme="light"] .listing,:root[data-friends-theme="light"] .modal{background:#fffaf6;color:#28242a;border-color:#ded5ce}
+:root[data-friends-theme="light"] .listing-body,:root[data-friends-theme="light"] .saved-item,:root[data-friends-theme="light"] .host-event{background:#fffaf6}
+:root[data-friends-theme="light"] .pick-card,:root[data-friends-theme="light"] .slot-card,:root[data-friends-theme="light"] .cal-day{background:#f5f0eb;color:#28242a;border-color:#ded5ce}
+:root[data-friends-theme="light"] .pick-card.selected{background:#f4e5df;border-color:#d77f6c}
+:root[data-friends-theme="light"] .slot-card.selected{background:#e4eee7;border-color:#8aa58f}
+:root[data-friends-theme="light"] .field input,:root[data-friends-theme="light"] .field select,:root[data-friends-theme="light"] .field textarea{background:#fff;color:#28242a;border-color:#d9d0ca}
+:root[data-friends-theme="light"] .topbar{background:#f5f1ed}
+:root[data-friends-theme="light"] .request-panel{background:#fffaf6}
+:root[data-friends-theme="light"] .brand-name,:root[data-friends-theme="light"] h1,:root[data-friends-theme="light"] h2,:root[data-friends-theme="light"] h3{color:#28242a}
+:root[data-friends-theme="light"] .cal-day.has-plan{background:#f2ddd6;border-color:#d77f6c}
 </style>
 </head>
 <body>
@@ -428,7 +445,14 @@ function listingCard(x){let isEvent=x.kind==='events',expired=!!x.expired,full=x
 function val(id){return $(id)?.value||'';}
 function renderListings(){let a=items.filter(x=>x.kind==='animals'&&(animalType==='All animals'||x.type===animalType)&&(`${x.name} ${x.place} ${x.address}`).toLowerCase().includes(val('animalSearch').toLowerCase())&&(!val('animalLocation')||x.place===val('animalLocation'))&&(!val('animalStatus')||(val('animalStatus')==='need'?x.status==='need':x.status==='full')));let g=items.filter(x=>x.kind==='grandfriends'&&(grandType==='All'||x.type===grandType)&&(`${x.name} ${x.place} ${x.address}`).toLowerCase().includes(val('grandSearch').toLowerCase())&&(!val('grandLocation')||x.place===val('grandLocation'))&&(!val('grandStatus')||(val('grandStatus')==='need'?x.status==='need':x.status==='full')));let e=events.filter(x=>(eventType==='All'||x.type===eventType)&&(`${x.name} ${x.place} ${x.address} ${x.type}`).toLowerCase().includes(val('eventSearch').toLowerCase())&&(!val('eventLocation')||x.place===val('eventLocation'))&&(!val('eventBudget')||x.min<=Number(val('eventBudget'))));$('animalCards').innerHTML=a.length?a.map(listingCard).join(''):'<div class="empty" style="grid-column:1/-1">No shelters match those filters.</div>';$('grandCards').innerHTML=g.length?g.map(listingCard).join(''):'<div class="empty" style="grid-column:1/-1">No homes match those filters.</div>';$('eventCards').innerHTML=e.length?e.map(listingCard).join(''):'<div class="empty" style="grid-column:1/-1">No events match your filters.</div>';}
 
-document.addEventListener('DOMContentLoaded',()=>{renderHome();renderListings();renderSaved();renderHost();renderCalendar();renderPlans();renderProfile();});
+document.addEventListener('DOMContentLoaded',()=>{
+/* Persist demo state between visits. Identity files are deliberately never stored in browser storage. */
+function persistFriendsState(){try{localStorage.setItem('friends-app-state',JSON.stringify({savedIds:[...savedIds],requests,events,profileData,verified}));}catch(e){toast('Browser storage is full; some demo changes may not persist.');}}
+try{const state=JSON.parse(localStorage.getItem('friends-app-state')||'null');if(state){if(Array.isArray(state.savedIds))savedIds=new Set(state.savedIds);if(Array.isArray(state.requests))requests=state.requests;if(Array.isArray(state.events))events=state.events;if(state.profileData)profileData={...profileData,...state.profileData};verified=state.verified===true;}}catch(e){}
+for(const fn of ['saveForLater','submitRequest','decideApplicant','cancelBooking','withdrawRequest','publishCommunityEvent','completeVerification','saveProfileDetails','setAutoAccept']){const original=window[fn];if(typeof original==='function'){window[fn]=function(...args){const out=original.apply(this,args);persistFriendsState();return out;};}}
+/* Theme switch keeps the supplied charcoal/coral design as the default and offers a coordinated light palette. */
+(function(){const top=document.querySelector('.topbar');if(!top||document.getElementById('friendsThemeSwitch'))return;const saved=localStorage.getItem('friends-dashboard-theme')||'dark';document.documentElement.dataset.friendsTheme=saved;top.insertAdjacentHTML('beforeend','<button id="friendsThemeSwitch" class="theme-switch" type="button" aria-label="Switch colour theme">'+(saved==='dark'?'☼ Light mode':'☾ Dark mode')+'</button>');document.getElementById('friendsThemeSwitch').addEventListener('click',()=>{const next=document.documentElement.dataset.friendsTheme==='dark'?'light':'dark';document.documentElement.dataset.friendsTheme=next;localStorage.setItem('friends-dashboard-theme',next);document.getElementById('friendsThemeSwitch').textContent=next==='dark'?'☼ Light mode':'☾ Dark mode';});})();
+renderHome();renderListings();renderSaved();renderHost();renderCalendar();renderPlans();renderProfile();});
 
 </script>
 </body>
