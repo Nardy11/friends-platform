@@ -24,7 +24,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm install
-      - name: Prepare prototype asset and modern form controls
+      - name: Prepare prototype page
         run: |
           mkdir -p public
           cp friends-volunteer-overview-v2.html public/friends.html
