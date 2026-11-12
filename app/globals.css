@@ -375,3 +375,20 @@
 .auth-page .auth-form input:not([type=checkbox]),.auth-page .auth-form select,.auth-page .auth-form textarea{background:#171319;color:#f8f1ef;border-color:#51424e}
 .auth-page .auth-aside h1 em,.auth-page .signup-heading h1 em{color:#ed927f}.auth-page .btn.primary{background:#ed927f;color:#27191a}.auth-page .switch a,.auth-page .auth-footer a,.auth-page .forgot button{color:#ed927f}
 .auth-page .terms{background:#352b35}.auth-page .strength{background:#1a171e;border-color:#4a3d49}.auth-page .demo-note{color:#bdb2bb;border-color:#51424e}
+
+/* Shared Friends logo and authentication layout */
+.auth-brand{display:flex;align-items:center;gap:10px;color:#f8f1ef;font:800 21px Manrope;letter-spacing:-.7px}
+.auth-brand .showcase-mark{width:31px;height:31px;display:grid;place-items:center;color:#ed927f}
+.auth-brand .showcase-mark svg{width:100%;height:100%}
+.auth-brand>span:last-child{color:#f8f1ef}
+.auth-page{background:radial-gradient(ellipse at 15% 12%,#39282f 0%,transparent 38%),#171319;color:#f8f1ef}
+.auth-page .auth-card{background:linear-gradient(145deg,#29232d,#211c24);border:1px solid #51424e;box-shadow:0 22px 60px #0005}
+.auth-page .auth-card h2,.auth-page .signup-form h3{color:#fff6f2}
+.auth-page .muted,.auth-page .auth-aside>p:not(.eyebrow),.auth-page .auth-footer{color:#c0b5bd}
+.auth-page .auth-form label{color:#e7dfe3}
+.auth-page .auth-form input:not([type=checkbox]),.auth-page .auth-form select,.auth-page .auth-form textarea{background:#171319;color:#f8f1ef;border-color:#51424e}
+.auth-page .auth-aside h1 em,.auth-page .signup-heading h1 em{color:#ed927f}
+.auth-page .btn.primary{background:#ed927f;color:#27191a}
+.auth-page .switch a,.auth-page .auth-footer a,.auth-page .forgot button{color:#ed927f}
+.auth-page .terms{background:#352b35}.auth-page .strength{background:#1a171e;border-color:#4a3d49}
+.auth-page .demo-note{color:#bdb2bb;border-color:#51424e}
