@@ -608,3 +608,29 @@
  .friends-showcase .hero-float-belong{right:2%;bottom:8%}
 }
 @media(prefers-reduced-motion:reduce){.friends-showcase .showcase-hero-photo .hero-float-card{animation:none!important}}
+
+
+/* Final hero: keep the supplied portrait still; animate only independent UI pills. */
+.friends-showcase .showcase-hero-photo .showcase-hero-artwork{
+ animation:none!important;transform:none!important;will-change:auto;
+}
+.friends-showcase .showcase-hero-photo .hero-float-card{
+ position:absolute;z-index:5;display:inline-flex;align-items:center;justify-content:center;gap:9px;
+ height:auto;min-height:48px;padding:9px 18px;border:2px solid #ed927f;border-radius:999px;
+ background:#241d26;color:#fff3ef;box-shadow:0 4px 14px #0005,inset 0 0 0 1px #ffffff12;
+ font:700 clamp(10px,1.15vw,15px) Manrope,sans-serif;white-space:nowrap;
+ pointer-events:none;backdrop-filter:blur(7px);
+}
+.friends-showcase .showcase-hero-photo .hero-float-card>span{color:#ed927f;font-size:1.25em;line-height:1}
+.friends-showcase .showcase-hero-photo .hero-float-volunteer{left:15.6%;top:12.8%;width:25.8%;animation:heroBadgeFloatA 4.2s ease-in-out infinite}
+.friends-showcase .showcase-hero-photo .hero-float-meet{left:58.7%;top:6.8%;width:18.3%;animation:heroBadgeFloatB 4.8s ease-in-out infinite}
+.friends-showcase .showcase-hero-photo .hero-float-care{left:12%;top:69.3%;width:20%;animation:heroBadgeFloatB 4.5s ease-in-out infinite}
+.friends-showcase .showcase-hero-photo .hero-float-belong{left:67.8%;top:71.7%;width:23%;animation:heroBadgeFloatA 5s ease-in-out infinite}
+@keyframes heroBadgeFloatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes heroBadgeFloatB{0%,100%{transform:translateY(-2px)}50%{transform:translateY(7px)}}
+.friends-showcase .showcase-hero-photo .hero-heart,.friends-showcase .showcase-hero-photo .hero-spark{display:none}
+@media(max-width:620px){
+ .friends-showcase .showcase-hero-photo .hero-float-card{min-height:0;padding:5px 7px;gap:4px;border-width:1px;font-size:8px}
+ .friends-showcase .showcase-hero-photo .hero-float-card>span{font-size:1em}
+}
+@media(prefers-reduced-motion:reduce){.friends-showcase .showcase-hero-photo .hero-float-card{animation:none!important}}
