@@ -108,15 +108,31 @@ export default function PhoneShowcase(){
  const [busy,setBusy]=useState(false);
  const prevSide=useRef(STEPS[0].side);
  const sentinels=useRef([]);
+ const lock=useRef(null);
  const cur=STEPS[step];
 
  useEffect(()=>{if(cur.side!==prevSide.current){prevSide.current=cur.side;setSpins(s=>s+1)}},[cur.side]);
  useEffect(()=>{
-  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)setStep(Number(e.target.dataset.step))})},{rootMargin:'-45% 0px -45% 0px'});
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;const n=Number(e.target.dataset.step);if(lock.current!==null){if(n===lock.current)lock.current=null;return}setStep(n)})},{rootMargin:'-45% 0px -45% 0px'});
   sentinels.current.forEach(el=>el&&io.observe(el));
   return()=>io.disconnect();
  },[]);
- const go=k=>{const i=idx(k);if(i>=0)setStep(i)};
+ // Tapping in the phone (or a dot) also scrolls the page to that screen's place in the section,
+ // so scrolling afterwards continues from where the visitor is. Scroll triggers are paused
+ // until the page arrives, so the phone does not flip through the screens in between.
+ const jump=i=>{
+  if(i<0)return;setStep(i);
+  const el=sentinels.current[i];if(!el||!el.offsetHeight)return;
+  const r=el.getBoundingClientRect(),y=window.scrollY+r.top+r.height/2-window.innerHeight/2;
+  if(Math.abs(y-window.scrollY)<4)return;
+  lock.current=i;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+  const release=()=>{lock.current=null;window.removeEventListener('scrollend',release)};
+  window.addEventListener('scrollend',release,{once:true});
+  setTimeout(release,1500);
+ };
+ const go=k=>jump(idx(k));
  const tilt=cur.side==='right'?-9:9;
 
  return <section className="app-show" id="app" aria-label="The Friends app">
@@ -126,7 +142,7 @@ export default function PhoneShowcase(){
      <div key={cur.key} className="app-copy-inner">
       <h2>{cur.title}</h2><p>{cur.text}</p>
       <p className="app-hint"><Icon n="pointer"/>{cur.hint}</p>
-      <div className="app-dots" role="tablist" aria-label="App screens">{STEPS.map((s,i)=><button key={s.key} type="button" role="tab" aria-selected={i===step} aria-label={s.title} className={i===step?'on':''} onClick={()=>setStep(i)}/>)}</div>
+      <div className="app-dots" role="tablist" aria-label="App screens">{STEPS.map((s,i)=><button key={s.key} type="button" role="tab" aria-selected={i===step} aria-label={s.title} className={i===step?'on':''} onClick={()=>jump(i)}/>)}</div>
       <div className="app-stores"><span><Icon n="smartphone"/>Coming soon to iPhone and Android</span><Link href="/signup/" className="showcase-join">Get started on the web <Icon n="arrow-up-right"/></Link></div>
      </div>
     </div>
