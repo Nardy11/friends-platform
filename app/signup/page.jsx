@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import {SignupForm} from '../../components/AuthForm';
+export const metadata={title:'Join Friends · Create an account',description:'Create your Friends profile and find meaningful offline connections.'};
+export default function SignupPage(){return <main className="auth-page signup-page"><Link href="/" className="auth-brand"><b>f</b> friends<span>.</span></Link><header className="signup-heading"><p className="eyebrow">MAKE ROOM FOR CONNECTION</p><h1>Let’s make your world<br/><em>a little bigger.</em></h1><p>Tell us a little about yourself so we can help you find people and plans that feel right.</p></header><section className="auth-card signup-card"><p className="eyebrow">YOUR FRIENDS PROFILE</p><h2>Create an account</h2><SignupForm/></section><footer className="auth-footer"><span>© {new Date().getFullYear()} Friends</span><span>Already have an account? <Link href="/login/">Log in</Link></span></footer></main>}
