@@ -30,14 +30,14 @@ Platform constraint: the repository uses `output: 'export'` and GitHub Pages. It
 ## Workstream 3 — Integration / workflow review
 Static code paths reviewed: landing -> login/signup; successful demo auth redirects to `/app/`; dashboard navigation to Explore/My Plans; date selection and clear; add/remove plan; notification preview/expanded list/read state; theme toggle on each route.
 
-No live browser E2E run has been completed against this branch because GitHub Pages serves the deployed main branch, not this feature branch. No production build result is claimed. PR CI is added separately to run the Next.js build.
+No live browser E2E run has been completed against this branch because GitHub Pages serves the deployed main branch, not this feature branch. GitHub Actions successfully ran npm install, npm run build, and verified the exported /, /login/, /signup/, and /app/ entry points on the latest branch commit.
 
 ## Verification status
 | Check | Status |
 |---|---|
 | Repository route/tree inspection | Completed |
 | Static review of changed flows | Completed |
-| Production build | Pending CI |
+| Production build and static route export | Passed in GitHub Actions on the latest branch commit |
 | Browser desktop workflows | Pending |
 | Browser mobile workflows | Pending |
 | Theme persistence across route navigation | Pending browser test |
