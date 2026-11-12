@@ -2,9 +2,9 @@
 import Link from 'next/link';
 import {useState} from 'react';
 import ThemeToggle from '../components/ThemeToggle';
+import {FriendsBrand} from '../components/FriendsBrand';
 
-function BrandMark(){return <span className="showcase-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M24 39S7 29 7 17c0-7 9-11 17-2 8-9 17-5 17 2 0 12-17 22-17 22Z" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/><path d="M13 25c4-5 8-6 12-3 3 2 5 2 9-1M18 31c3-3 6-4 9-2" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/></svg></span>}
-function Brand(){return <Link href="/" className="showcase-brand"><BrandMark/><span>Friends</span></Link>}
+function Brand(){return <Link href="/" className="showcase-brand"><FriendsBrand/><span>Friends</span></Link>}
 const stories=[
  {quote:'“Friends gave me a sense of purpose. I made new friends, helped at a shelter, and even started visiting a grandfriend weekly. It really changed my routine.”',name:'Omar H.',meta:'Member since Mar 2025',image:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=85'},
  {quote:'“I joined for one afternoon at the shelter. I stayed because the people I met made it feel like I belonged somewhere.”',name:'Mariam A.',meta:'Community member',image:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&q=85'},
