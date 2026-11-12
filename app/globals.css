@@ -705,3 +705,19 @@
 .app-confirm-actions button{cursor:pointer;border-radius:10px;padding:10px 14px;font-weight:800;font-size:12px}
 .app-confirm-cancel{background:transparent;border:1px solid var(--line);color:inherit}
 .app-confirm-danger{background:#b64f48;border:1px solid #b64f48;color:#fff}
+
+
+/* Screenshot-specific light-mode corrections for the Friends showcase. */
+:root[data-theme='light'] .friends-showcase .showcase-hero h1{color:#30232d!important}
+:root[data-theme='light'] .friends-showcase .showcase-hero h1 em{color:#a94f45!important}
+:root[data-theme='light'] .friends-showcase .showcase-stats{background:linear-gradient(110deg,#fffaf7 0%,#f0e1dc 100%)!important;border:1px solid #d9c2bc!important;box-shadow:0 12px 28px #533b3510!important}
+:root[data-theme='light'] .friends-showcase .showcase-stats>div{border-color:#dfcbc6!important}
+:root[data-theme='light'] .friends-showcase .showcase-stats strong{color:#30232d!important}
+:root[data-theme='light'] .friends-showcase .showcase-stats small{color:#65545e!important}
+:root[data-theme='light'] .friends-showcase .showcase-final:after{background:linear-gradient(90deg,#17131920 0%,#171319d9 57%,#171319f0 100%)!important}
+:root[data-theme='light'] .friends-showcase .showcase-final h2{color:#fff8f5!important;text-shadow:0 2px 16px #160e18a8}
+:root[data-theme='light'] .friends-showcase .showcase-final p{color:#f1e5e8!important}
+:root[data-theme='light'] .friends-showcase .showcase-final .showcase-join{background:#a94f45!important;color:#fff!important}
+.friends-showcase .showcase-brand,.friends-showcase .showcase-brand .friends-brand-mark,.friends-showcase .showcase-brand .friends-brand-mark svg,.friends-showcase .showcase-footer .friends-brand-mark{background:transparent!important;box-shadow:none!important;border:0!important}
+.friends-showcase .showcase-brand .friends-brand-mark{width:42px;height:42px;padding:0;border-radius:0!important}
+.friends-showcase a,.friends-showcase button{cursor:pointer}
