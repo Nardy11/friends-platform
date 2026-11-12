@@ -17,11 +17,15 @@ Next.js 15 App Router with static export on GitHub Pages. Landing/auth pages are
 - Creating/removing plans updates and persists browser-local state.
 
 ## Notifications
-- Topbar control displays unread count and opens a preview.
+- Topbar control displays unread count and opens a small popover anchored under the bell (never a full-screen modal); outside click or Escape closes it.
 - Preview ends with View all notifications.
 - Expanded view lists all notification records.
 - Mark all as read updates unread state without a washed-out disabled appearance.
 - Notification state persists in the current browser.
+
+## Destructive actions
+- Remove (saved items), Decline (applicants) and Cancel (requests, bookings) always ask "Are you sure" in a confirmation dialog before acting.
+- Every action re-renders the affected lists, counts and calendar markers immediately.
 
 ## Theme
 - Theme toggle exists on landing, login, signup, and dashboard.
