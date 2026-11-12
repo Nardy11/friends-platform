@@ -634,3 +634,7 @@
  .friends-showcase .showcase-hero-photo .hero-float-card>span{font-size:1em}
 }
 @media(prefers-reduced-motion:reduce){.friends-showcase .showcase-hero-photo .hero-float-card{animation:none!important}}
+
+
+/* The hero artwork is a still image; only separate UI accents may animate. */
+.showcase-hero-photo img{animation:none!important;transform:none!important;will-change:auto!important}
