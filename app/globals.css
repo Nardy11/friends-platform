@@ -484,3 +484,14 @@
 
 .showcase-brand .friends-brand-mark{width:34px;height:34px;display:inline-grid;place-items:center;color:var(--coral);flex:none}
 .showcase-brand .friends-brand-mark svg{width:100%;height:100%}
+
+:root[data-theme='light'] .friends-showcase{--show-bg:#f6eeeb;--show-panel:#fffaf7;--show-panel2:#f1e4e1;--show-line:#e5d2ce;--show-ink:#30262e;--show-muted:#766a73;--show-coral:#d97d6d;background:radial-gradient(ellipse at 20% 18%,#f1d8d2 0%,transparent 36%),radial-gradient(ellipse at 82% 60%,#eadbdc 0%,transparent 42%),var(--show-bg);color:var(--show-ink)}
+:root[data-theme='light'] .showcase-nav{border-color:#d9c7c4}
+:root[data-theme='light'] .showcase-nav nav a,:root[data-theme='light'] .showcase-lead,:root[data-theme='light'] .showcase-section-heading>p:last-child,:root[data-theme='light'] .why-showcase-grid p,:root[data-theme='light'] .testimonial-copy p{color:#665962}
+:root[data-theme='light'] .showcase-login,:root[data-theme='light'] .showcase-watch{color:#493943;border-color:#bfa6a5}
+:root[data-theme='light'] .showcase-stats,:root[data-theme='light'] .showcase-testimonial{background:linear-gradient(110deg,#fff9f6,#f0e2df)!important;border-color:#dfcbc7!important}
+:root[data-theme='light'] .showcase-stats strong,:root[data-theme='light'] .showcase-section-heading h2,:root[data-theme='light'] .how-showcase-steps h3,:root[data-theme='light'] .testimonial-copy strong{color:#30262e}
+:root[data-theme='light'] .showcase-stats small,:root[data-theme='light'] .testimonial-copy small{color:#766a73}
+:root[data-theme='light'] .why-showcase-grid article{background:linear-gradient(145deg,#fffaf7,#f0e3df)!important;border-color:#e4d1cc!important}
+:root[data-theme='light'] .showcase-testimonial>button{background:#ead8d4;color:#493943}
+:root[data-theme='light'] .showcase-final{border-color:#e1cfca}
