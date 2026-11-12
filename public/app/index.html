@@ -12,7 +12,7 @@
 <style>
 :root{
  --bg:#111014;--panel:#1b191f;--panel2:#242128;--panel3:#2c2931;--line:#35313a;
- --ink:#f6f2ee;--muted:#a7a1aa;--soft:#d2ccd2;--coral:#e69b88;--sage:#abc5a7;--blue:#9caddf;
+ --ink:#f6f2ee;--muted:#a7a1aa;--soft:#d2ccd2;--coral:#e69b88;--sage:#c3a9b2;--blue:#9caddf;
  --gold:#e2c58e;--danger:#e28f91;--radius:22px;--shadow:0 18px 55px #0005;
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;font-size:15px;line-height:1.5}
@@ -35,7 +35,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-
 .stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:28px;background:#1a181e}.stat{padding:18px 22px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat strong{font:700 25px Manrope;display:block}.stat span{font-size:12px;color:var(--muted)}
 .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 18px}.search{flex:1;min-width:220px;position:relative}.search i{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#999}.search input{width:100%;height:46px;border:1px solid var(--line);border-radius:13px;background:var(--panel);color:var(--ink);padding:0 15px 0 43px;outline:none}.search input:focus,.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--coral);box-shadow:0 0 0 3px #e69b8820}
 .filter-select{height:46px;padding:0 14px;border:1px solid var(--line);border-radius:13px;background:var(--panel);color:var(--ink);min-width:140px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.chip{border:1px solid var(--line);background:transparent;color:#c6c0ca;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700}.chip.active{background:#f3eee9;color:#221e23;border-color:#f3eee9}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.listing{background:var(--panel);border:1px solid #ffffff10;border-radius:19px;overflow:hidden;min-width:0;transition:transform .2s,border .2s}.listing:hover{transform:translateY(-3px);border-color:#ffffff28}.listing-image{height:185px;position:relative;overflow:hidden}.listing-image img{width:100%;height:100%;object-fit:cover;transition:transform .45s}.listing:hover .listing-image img{transform:scale(1.035)}.pill{position:absolute;top:13px;left:13px;padding:6px 10px;border-radius:999px;background:#17151bdc;color:#fff;font-size:10px;font-weight:600;backdrop-filter:blur(8px)}.pill.sage{background:#b9d0b5;color:#1b251d}.pill.coral{background:#e9a28e;color:#281c1b}.pill.blue{background:#a8b8e8;color:#1d2130}.spots{position:absolute;right:12px;top:13px;background:#17151bdc;color:#fff;border-radius:999px;padding:6px 10px;font-size:10px}.listing-body{padding:16px}.listing-body h3{font-size:17px}.listing-body p{font-size:12px;color:var(--muted);margin:6px 0 12px}.meta-row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;color:#c7c1ca;margin:10px 0}.meta-row span{display:flex;align-items:center;gap:6px}.meta-row i{font-size:14px;color:var(--coral)}.listing-footer{border-top:1px solid #ffffff10;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}.price{font-weight:600;font-size:13px}.price small{display:block;color:var(--muted);font-size:10px;font-weight:500}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.listing{background:var(--panel);border:1px solid #ffffff10;border-radius:19px;overflow:hidden;min-width:0;transition:transform .2s,border .2s}.listing:hover{transform:translateY(-3px);border-color:#ffffff28}.listing-image{height:185px;position:relative;overflow:hidden}.listing-image img{width:100%;height:100%;object-fit:cover;transition:transform .45s}.listing:hover .listing-image img{transform:scale(1.035)}.pill{position:absolute;top:13px;left:13px;padding:6px 10px;border-radius:999px;background:#17151bdc;color:#fff;font-size:10px;font-weight:600;backdrop-filter:blur(8px)}.pill.sage{background:#cfb6be;color:#241c1e}.pill.coral{background:#e9a28e;color:#281c1b}.pill.blue{background:#a8b8e8;color:#1d2130}.spots{position:absolute;right:12px;top:13px;background:#17151bdc;color:#fff;border-radius:999px;padding:6px 10px;font-size:10px}.listing-body{padding:16px}.listing-body h3{font-size:17px}.listing-body p{font-size:12px;color:var(--muted);margin:6px 0 12px}.meta-row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:11px;color:#c7c1ca;margin:10px 0}.meta-row span{display:flex;align-items:center;gap:6px}.meta-row i{font-size:14px;color:var(--coral)}.listing-footer{border-top:1px solid #ffffff10;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}.price{font-weight:600;font-size:13px}.price small{display:block;color:var(--muted);font-size:10px;font-weight:500}
 .category-row{display:flex;gap:10px;flex-wrap:wrap}.category-tile{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:15px;padding:12px 16px;display:flex;align-items:center;gap:9px;font-weight:700;font-size:13px}.category-tile.active{border-color:var(--coral);background:#2a2225}.category-tile i{font-size:17px;color:var(--coral)}
 .split{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px}.panel h3{margin-bottom:12px}.filter-list{display:grid;gap:12px}.checkline{display:flex;align-items:center;gap:9px;color:#c9c3cc;font-size:13px}.checkline input{accent-color:var(--coral);width:16px;height:16px}
 .event-card{display:grid;grid-template-columns:190px minmax(0,1fr);gap:0}.event-card .listing-image{height:100%;min-height:210px}.event-card .listing-body{padding:18px}.event-card h3{font-size:19px}.event-card .listing-footer{margin-top:14px}
@@ -65,7 +65,7 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-
 .pick-card b{display:block;font:700 14px Manrope}.pick-card small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
 .slot-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .slot-card{border:1px solid var(--line);background:#19171d;color:var(--ink);border-radius:12px;padding:11px;text-align:left}
-.slot-card.selected{border-color:var(--sage);background:#273027}
+.slot-card.selected{border-color:var(--sage);background:#30272a}
 .slot-card b{display:block;font-size:13px}.slot-card small{font-size:10px;color:var(--muted)}
 .date-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:15px 0}
 .date-nav button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:11px;padding:9px 12px}
@@ -81,13 +81,13 @@ h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:Manrope,sans-serif;letter-spacing:-
 .applicant-card img{width:58px;height:58px;border-radius:50%;object-fit:cover}
 .applicant-actions{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end}
 .status-tag{display:inline-flex;padding:5px 9px;border-radius:99px;font-size:10px;font-weight:700;background:#3b343d;color:#e6dce8}
-.status-tag.full{background:#4a3738;color:#f2b9b4}.status-tag.expired{background:#333039;color:#aaa3af}.status-tag.open{background:#293b2e;color:#b9d5b8}
+.status-tag.full{background:#4a3738;color:#f2b9b4}.status-tag.expired{background:#333039;color:#aaa3af}.status-tag.open{background:#3a2a2f;color:#d4b9c2}
 .notification-item{display:flex;gap:12px;margin:9px 0}.notification-icon{width:38px;height:38px;border-radius:12px;background:#302830;color:var(--coral);display:grid;place-items:center;flex:none}
 .verification-banner{border:1px solid #8f766d;background:#2d2427;padding:14px;border-radius:14px;margin:12px 0;color:#e8d8d2}
 .file-drop{border:1px dashed #776b78;border-radius:13px;padding:14px;background:#19171d}
 .toggle-line{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 .toggle{appearance:none;width:44px;height:25px;background:#514a55;border-radius:99px;position:relative;cursor:pointer;transition:.2s}
-.toggle:checked{background:#9bb89a}.toggle:before{content:"";position:absolute;width:19px;height:19px;border-radius:50%;background:white;left:3px;top:3px;transition:.2s}.toggle:checked:before{left:22px}
+.toggle:checked{background:#b69ba4}.toggle:before{content:"";position:absolute;width:19px;height:19px;border-radius:50%;background:white;left:3px;top:3px;transition:.2s}.toggle:checked:before{left:22px}
 @media(max-width:760px){.picker-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.saved-grid,.host-grid{grid-template-columns:1fr}.slot-list{grid-template-columns:1fr 1fr}}
 
 
@@ -226,7 +226,7 @@ button.chat-item{width:100%;border:0;background:transparent;color:inherit;text-a
 @media(max-width:760px){.plan-row{flex-wrap:wrap}.plan-row .plan-cancel{margin-left:auto}}
 
 /* Light theme: deeper surfaces and darker text, white text only on dark or coral fills */
-:root[data-theme='light']{color-scheme:light;--bg:#efe6e2;--panel:#faf5f2;--panel2:#f1e7e3;--panel3:#e7d9d4;--line:#d6c4be;--ink:#1f171e;--muted:#4f434b;--soft:#3a2f37;--coral:#a4473a;--sage:#3f6b43;--blue:#3f5592;--danger:#b03f37;--shadow:0 16px 40px #4a2f2a24}
+:root[data-theme='light']{color-scheme:light;--bg:#efe6e2;--panel:#faf5f2;--panel2:#f1e7e3;--panel3:#e7d9d4;--line:#d6c4be;--ink:#1f171e;--muted:#4f434b;--soft:#3a2f37;--coral:#a4473a;--sage:#69414e;--blue:#3f5592;--danger:#b03f37;--shadow:0 16px 40px #4a2f2a24}
 :root[data-theme='light'] body{background:var(--bg);color:var(--ink)}
 :root[data-theme='light'] .sidebar{background:#f8f1ee;border-right-color:var(--line)}
 :root[data-theme='light'] .side-label{color:#6a5c66}
@@ -269,12 +269,12 @@ button.chat-item{width:100%;border:0;background:transparent;color:inherit;text-a
 :root[data-theme='light'] .empty{border-color:#c7b3ad}
 :root[data-theme='light'] .pick-card,:root[data-theme='light'] .slot-card,:root[data-theme='light'] .cal-day{background:#fff;border-color:var(--line)}
 :root[data-theme='light'] .pick-card.selected{background:#f6e2dc;border-color:var(--coral)}
-:root[data-theme='light'] .slot-card.selected{background:#e2ede1;border-color:var(--sage)}
+:root[data-theme='light'] .slot-card.selected{background:#ece2e5;border-color:var(--sage)}
 :root[data-theme='light'] .cal-day.selected{background:var(--coral);border-color:var(--coral);color:#fff}
 :root[data-theme='light'] .status-tag{background:#e8dbd6;color:#3a2f37}
 :root[data-theme='light'] .status-tag.full{background:#f5d9d5;color:#8a2f25}
 :root[data-theme='light'] .status-tag.expired{background:#e7e2e5;color:#5d5560}
-:root[data-theme='light'] .status-tag.open{background:#dcebdc;color:#2f5a33}
+:root[data-theme='light'] .status-tag.open{background:#eadde1;color:#58313e}
 :root[data-theme='light'] .notification-icon{background:#f3dfd9}
 :root[data-theme='light'] .verification-banner{background:#f7e6e0;border-color:#c9a59b;color:#4a2f2a}
 :root[data-theme='light'] .toggle{background:#c9b9be}
@@ -292,6 +292,64 @@ button.chat-item{width:100%;border:0;background:transparent;color:inherit;text-a
 .calendar-plan-panel .calendar-grid{gap:5px}
 .calendar-plan-panel .cal-day{min-height:40px;padding:4px 2px;font-size:12px;border-radius:10px}
 .applicant-card{align-items:center}
+
+/* ===== Friends v5: slimmer layout and branded dropdowns ===== */
+body{font-size:14px}
+@media(min-width:1101px){.app{grid-template-columns:228px minmax(0,1fr)}.sidebar{width:228px}}
+.sidebar{padding:22px 14px 18px 16px}
+.brand{padding:0 8px 22px;gap:9px}.brand-name{font-size:20px;letter-spacing:-.8px}.brand small{font-size:9px}
+.brand-mark{width:28px;height:28px}
+.side-label{margin:6px 0 8px;font-size:9.5px}
+.nav{gap:2px}.nav button{padding:9px 11px;font-size:13.5px;gap:11px;border-radius:11px}.nav button i{font-size:17px}
+.side-note{padding:13px;margin:10px 2px 12px;border-radius:14px}.side-note strong{font-size:13px}.side-note p{font-size:11.5px;margin-bottom:10px}.side-note button{padding:7px 11px;font-size:11.5px;border-radius:9px}
+.user-mini{padding:8px}.user-mini b{font-size:12.5px}.avatar{width:34px;height:34px;font-size:13px}
+.main{padding:22px clamp(18px,3vw,40px) 64px}
+.topbar,.page{max-width:1160px;margin-left:auto;margin-right:auto}
+.topbar{margin-bottom:24px}
+.icon-btn{width:38px;height:38px;border-radius:12px}.icon-btn i{font-size:16px}
+h1{font-size:clamp(27px,3vw,36px);letter-spacing:-1px}h2{font-size:20px;letter-spacing:-.5px}h3{font-size:15px}
+.lead{font-size:14px}
+.eyebrow{font-size:10.5px}
+.hero{min-height:290px;border-radius:22px}
+.hero-copy{padding:clamp(24px,3.2vw,40px)}.hero-copy p{font-size:14px;margin-bottom:20px}.hero-photo{min-height:290px}
+.section-head{margin:30px 0 14px}.section-head p{font-size:12.5px}
+.path-grid{gap:12px}.path-card{min-height:200px;border-radius:18px}.path-content{padding:16px}.path-content h3{font-size:19px}.path-content p{font-size:11.5px}
+.cards{gap:14px}.listing{border-radius:16px}.listing-image{height:158px}.listing-body{padding:13px 14px}.listing-body h3{font-size:15px}.listing-body p{font-size:11.5px}
+.stats{margin-top:22px;border-radius:15px}.stats .stat{padding:13px 18px}.stat strong{font-size:20px}.stat span{font-size:11.5px}
+.panel{padding:17px;border-radius:16px}
+.category-tile{padding:8px 13px;font-size:12.5px;border-radius:12px}.category-tile i{font-size:15px}
+.chip{padding:6px 12px;font-size:11.5px}
+.toolbar{margin:18px 0 14px}.search input,.filter-select{height:40px;border-radius:11px;font-size:13px}
+.modal{border-radius:20px;padding:22px;width:min(560px,100%)}
+.field input,.field select,.field textarea{padding:10px 12px;border-radius:10px;font-size:13px}
+.profile-head{padding:18px;border-radius:16px}.profile-head .avatar{width:58px;height:58px;font-size:20px}.setting{padding:15px;border-radius:14px}
+.plan-row{padding:12px 14px;border-radius:14px}
+.chat-layout{min-height:500px;border-radius:16px}.chat-list{padding:12px}
+.saved-item,.host-event,.applicant-card,.notification-item{border-radius:14px;padding:13px}
+.saved-item img{width:80px;height:70px}
+.detail-hero{height:250px;border-radius:18px}.detail-hero-label h2{font-size:27px}.detail-layout{grid-template-columns:minmax(0,1fr) 300px}
+.text-link{font-size:12.5px}
+
+/* Branded dropdowns (each native select stays underneath for value and validation) */
+.fs-select{position:relative;min-width:0}
+.toolbar .fs-select{min-width:150px}
+.fs-hidden{position:absolute!important;left:12px;bottom:0;width:1px!important;height:1px!important;min-width:0!important;opacity:0;pointer-events:none;padding:0!important;border:0!important}
+.fs-trigger{width:100%;height:40px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 13px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--ink);font:500 13px 'DM Sans',sans-serif;text-align:left;cursor:pointer;transition:border-color .18s,box-shadow .18s}
+.fs-trigger span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fs-trigger .icon{color:var(--coral);font-size:15px;flex:none;transition:transform .2s}
+.fs-select.is-open .fs-trigger .icon{transform:rotate(180deg)}
+.fs-trigger:hover,.fs-select.is-open .fs-trigger,.fs-trigger:focus-visible{border-color:var(--coral);outline:none}
+.fs-select.is-open .fs-trigger,.fs-trigger:focus-visible{box-shadow:0 0 0 3px color-mix(in srgb,var(--coral) 20%,transparent)}
+.field .fs-trigger{height:42px;background:#17151b;border-color:#48414d}
+.fs-list{position:absolute;z-index:45;top:calc(100% + 6px);left:0;right:0;min-width:180px;max-height:240px;overflow:auto;margin:0;padding:6px;list-style:none;background:var(--panel2);border:1px solid var(--line);border-radius:13px;box-shadow:0 18px 44px #0008;animation:friendsPop .16s cubic-bezier(.16,1,.3,1)}
+.fs-list[hidden]{display:none}
+.fs-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:9px;font-size:13px;color:var(--ink);cursor:pointer}
+.fs-list li.is-active{background:var(--panel3)}
+.fs-list li.is-selected{color:var(--coral);font-weight:600}
+.fs-list li .icon{font-size:14px}
+:root[data-theme='light'] .field .fs-trigger{background:#fff;border-color:var(--line)}
+:root[data-theme='light'] .fs-list{background:var(--panel);box-shadow:0 18px 44px #4a2f2a2e}
+@media(max-width:430px){.toolbar .fs-select{flex:1;min-width:0}}
 </style>
 </head>
 <body>
@@ -458,7 +516,7 @@ document.querySelectorAll('#animalTypes .chip').forEach(b=>b.onclick=()=>{animal
 document.querySelectorAll('#grandTypes .chip').forEach(b=>b.onclick=()=>{grandType=b.dataset.type;document.querySelectorAll('#grandTypes .chip').forEach(x=>x.classList.toggle('active',x===b));renderListings()});
 function selectEventType(t){eventType=t;document.querySelectorAll('#eventTypes .chip').forEach(b=>b.classList.toggle('active',b.dataset.type===t));renderListings()}
 function statusLabel(x){return x==='need'?'Volunteers needed':'Currently full'}
-function listingCard(x){let isEvent=x.kind==='events';return `<article class="listing" onclick="openDetail('${x.id}')"><div class="listing-image"><img src="${img(x.image)}" alt="${x.name}" loading="lazy"><span class="pill ${x.kind==='animals'?'coral':x.kind==='grandfriends'?'sage':'blue'}">${isEvent?x.type:x.kind==='animals'?'Animal shelter':'Grandfriends home'}</span><span class="spots">${isEvent?x.spots+' spots left':x.status==='need'?x.spots+' openings':'Full'}</span></div><div class="listing-body"><h3>${x.name}</h3><p>${isEvent?x.desc.slice(0,82)+'…':x.desc.slice(0,86)+'…'}</p><div class="meta-row"><span><i class="icon icon-map-pin"></i>${x.place}</span><span><i class="icon icon-${isEvent?'calendar':'clock'}"></i>${isEvent?x.date:x.duration}</span></div><div class="listing-footer"><div class="price">${isEvent?(x.min===0?'Free':'EGP '+x.min+'–'+x.max):x.status==='need'?'Free to volunteer':'No openings'}<small>${isEvent?'expected spend':'no payment required'}</small></div><button class="btn small ${isEvent?'':'secondary'}" onclick="event.stopPropagation();openDetail('${x.id}')">${isEvent?'View event':'View shelter'}</button></div></div></article>`}
+function listingCard(x){let isEvent=x.kind==='events';return `<article class="listing" onclick="openDetail('${x.id}')"><div class="listing-image"><img src="${img(x.image)}" alt="${x.name}" loading="lazy"><span class="pill ${x.kind==='animals'?'coral':x.kind==='grandfriends'?'sage':'blue'}">${isEvent?x.type:x.kind==='animals'?'Animal shelter':'Grandfriends home'}</span><span class="spots">${isEvent?x.spots+(x.spots===1?' spot left':' spots left'):x.status==='need'?x.spots+' openings':'Full'}</span></div><div class="listing-body"><h3>${x.name}</h3><p>${isEvent?x.desc.slice(0,82)+'…':x.desc.slice(0,86)+'…'}</p><div class="meta-row"><span><i class="icon icon-map-pin"></i>${x.place}</span><span><i class="icon icon-${isEvent?'calendar':'clock'}"></i>${isEvent?x.date:x.duration}</span></div><div class="listing-footer"><div class="price">${isEvent?(x.min===0?'Free':'EGP '+x.min+'–'+x.max):x.status==='need'?'Free to volunteer':'No openings'}<small>${isEvent?'expected spend':'no payment required'}</small></div><button class="btn small ${isEvent?'':'secondary'}" onclick="event.stopPropagation();openDetail('${x.id}')">${isEvent?'View event':'View shelter'}</button></div></div></article>`}
 function renderListings(){
  let a=items.filter(x=>x.kind==='animals'),g=items.filter(x=>x.kind==='grandfriends'),e=[...events];
  const val=id=>$(id)?.value||'';
@@ -474,7 +532,7 @@ function openDetail(id){let x=[...items,...events].find(v=>v.id===id);if(!x)retu
  <div class="detail-hero"><img src="${img(x.image)}" alt="${x.name}"><div class="detail-hero-label"><span class="pill ${isEvent?'blue':x.kind==='animals'?'coral':'sage'}" style="position:static">${isEvent?x.type:x.kind==='animals'?'Animal shelter':'Grandfriends'}</span><h2>${x.name}</h2><span style="font-size:12px;color:#eee"><i class="icon icon-map-pin"></i> ${x.address}</span></div></div>
  <div class="detail-layout"><div>
   <p class="detail-copy">${x.desc}</p>
-  ${isEvent?`<h3>About this meet-up</h3><p class="detail-copy">Hosted by ${x.host}. ${x.group} · ${x.newbie?'First-timers welcome':'Open to everyone'}. The group chat opens when your request is accepted so you can coordinate before meeting.</p><h3>Who's going</h3><div class="panel" style="display:flex;align-items:center;gap:12px"><div class="avatar">M</div><div class="avatar" style="background:#a9c3a5">O</div><div class="avatar" style="background:#9caddf">S</div><div><b>${x.going} people going</b><div class="muted" style="font-size:11px">${x.spots} places remaining</div></div></div>`:`<h3>How you can help</h3><div class="category-row">${x.needs.map(n=>`<span class="chip">${n}</span>`).join('')}</div><h3>Visit details</h3><p class="detail-copy">Visits are coordinated with the shelter or home team. Please wait for confirmation before arriving. A staff member will guide your visit.</p>`}
+  ${isEvent?`<h3>About this meet-up</h3><p class="detail-copy">Hosted by ${x.host}. ${x.group} · ${x.newbie?'First-timers welcome':'Open to everyone'}. The group chat opens when your request is accepted so you can coordinate before meeting.</p><h3>Who's going</h3><div class="panel" style="display:flex;align-items:center;gap:12px"><div class="avatar">M</div><div class="avatar" style="background:#c1a6af">O</div><div class="avatar" style="background:#9caddf">S</div><div><b>${x.going} people going</b><div class="muted" style="font-size:11px">${x.spots} places remaining</div></div></div>`:`<h3>How you can help</h3><div class="category-row">${x.needs.map(n=>`<span class="chip">${n}</span>`).join('')}</div><h3>Visit details</h3><p class="detail-copy">Visits are coordinated with the shelter or home team. Please wait for confirmation before arriving. A staff member will guide your visit.</p>`}
   <h3>Location</h3><div class="panel"><b>${x.address}</b><p class="muted" style="font-size:12px;margin:4px 0"> ${x.place} · ${isEvent?'Meet at the venue entrance':'Exact visit instructions shared after confirmation'}</p><button class="text-link" onclick="toast('Map preview is not connected in this prototype.')">View on map</button></div>
  </div>
  <aside class="panel request-panel"><h3>${isEvent?'Event details':'Visit information'}</h3><div class="detail-info">
@@ -578,7 +636,7 @@ function changeMonth(n){calendarCursor.setMonth(calendarCursor.getMonth()+n);ren
 
 function go(page){const el=$('page-'+page);if(!el)return;document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));el.classList.add('active');document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.querySelector('.main')?.scrollTo({top:0,behavior:'smooth'});window.scrollTo({top:0,behavior:'smooth'});if(page==='plans')renderPlans();if(page==='you')renderProfile();if(page==='chats')renderChats();if(page==='saved')renderSaved();if(page==='host')renderHost();}
 function openDetail(id){let x=getItem(id);if(!x)return;currentDetail=x;go('detail');let isEvent=x.kind==='events';let state=x.expired?'Expired':x.spots===0?'Full':'Open';$('detailContent').innerHTML=`<div class="detail-hero"><img src="${img(x.image)}" alt="${x.name}"><div class="detail-hero-label"><span class="pill ${isEvent?'blue':x.kind==='animals'?'coral':'sage'}" style="position:static">${isEvent?x.type:x.kind==='animals'?'Animal shelter':'Grandfriends'}</span><h2>${x.name}</h2><span style="font-size:12px;color:#eee"><i class="icon icon-map-pin"></i> ${x.address}</span></div></div><div class="detail-layout"><div><p class="detail-copy">${x.desc}</p><h3>${isEvent?'Event schedule':'How you can help'}</h3>${isEvent?`<p class="detail-copy">Dates: ${(x.dates||[x.date]).join(' · ')}<br>Time: ${(x.timeSlots||[x.time]).join(' · ')}</p><p class="detail-copy">Hosted by ${x.host}. ${x.group} · ${x.newbie?'First-timers welcome':''}</p>`:`<div class="category-row">${x.needs.map(n=>`<span class="chip">${n}</span>`).join('')}</div><h3>Available visit slots</h3><p class="detail-copy">Choose from the available dates and time slots when requesting a visit.</p><div class="category-row">${(x.visitSlots||[]).slice(0,6).map(s=>`<span class="chip">${s.date} · ${s.time}</span>`).join('')}</div>`}<h3>Location</h3><div class="panel"><b>${x.address}</b><p class="muted" style="font-size:12px">${x.place}</p></div></div><aside class="panel request-panel"><h3>${isEvent?'Event details':'Visit information'}</h3><div class="detail-info">${isEvent?`<div class="info-box"><small>Dates</small><b>${(x.dates||[x.date]).join(', ')}</b></div><div class="info-box"><small>Time</small><b>${(x.timeSlots||[x.time]).join(', ')}</b></div><div class="info-box"><small>Expected spend</small><b>${x.min===0?'Free':'EGP '+x.min+'–'+x.max}</b></div><div class="info-box"><small>Availability</small><b>${state}</b></div>`:`<div class="info-box"><small>Availability</small><b>${state==='Open'?x.spots+' openings':state}</b></div><div class="info-box"><small>Visit length</small><b>${x.duration}</b></div><div class="info-box"><small>Visiting hours</small><b>${x.hours}</b></div>`}</div><p class="muted" style="font-size:11px">${isEvent?'You can only apply for the published dates.':'Visits are subject to the organisation’s approval.'}</p><button class="btn coral" ${state!=='Open'?'disabled':''} onclick="openRequest('${x.id}')">${isEvent?'Request to join':'Request a volunteer visit'}</button><button class="btn secondary" data-save-id="${x.id}" aria-pressed="${savedIds.has(x.id)}" onclick="saveForLater('${x.id}')">${savedIds.has(x.id)?'Remove saved':'Save for later'}</button></aside></div>`;}
-function listingCard(x){let isEvent=x.kind==='events',expired=!!x.expired,full=x.spots===0;let label=expired?'Expired':full?'Full':isEvent?x.spots+' spots left':x.spots+' openings';return `<article class="listing" onclick="openDetail('${x.id}')"><div class="listing-image"><img src="${img(x.image)}" alt="${x.name}" loading="lazy"><span class="pill ${x.kind==='animals'?'coral':x.kind==='grandfriends'?'sage':'blue'}">${isEvent?x.type:x.kind==='animals'?'Animal shelter':'Grandfriends home'}</span><span class="spots">${label}</span></div><div class="listing-body"><h3>${x.name}</h3><p>${x.desc.slice(0,88)}${x.desc.length>88?'…':''}</p><div class="meta-row"><span><i class="icon icon-map-pin"></i>${x.place}</span><span><i class="icon icon-${isEvent?'calendar':'clock'}"></i>${isEvent?(x.dates||[x.date]).length>1?(x.dates||[]).length+' dates':x.date:x.duration}</span></div><div class="listing-footer"><div class="price">${isEvent?(x.min===0?'Free':'EGP '+x.min+'–'+x.max):full?'No openings':'Free to volunteer'}<small>${isEvent?'expected spend':full?'currently full':'no payment required'}</small></div><button class="btn small ${isEvent?'':'secondary'}" onclick="event.stopPropagation();openDetail('${x.id}')">${isEvent?'View event':'View details'}</button></div></div></article>`;}
+function listingCard(x){let isEvent=x.kind==='events',expired=!!x.expired,full=x.spots===0;let label=expired?'Expired':full?'Full':isEvent?x.spots+(x.spots===1?' spot left':' spots left'):x.spots+' openings';return `<article class="listing" onclick="openDetail('${x.id}')"><div class="listing-image"><img src="${img(x.image)}" alt="${x.name}" loading="lazy"><span class="pill ${x.kind==='animals'?'coral':x.kind==='grandfriends'?'sage':'blue'}">${isEvent?x.type:x.kind==='animals'?'Animal shelter':'Grandfriends home'}</span><span class="spots">${label}</span></div><div class="listing-body"><h3>${x.name}</h3><p>${x.desc.slice(0,88)}${x.desc.length>88?'…':''}</p><div class="meta-row"><span><i class="icon icon-map-pin"></i>${x.place}</span><span><i class="icon icon-${isEvent?'calendar':'clock'}"></i>${isEvent?(x.dates||[x.date]).length>1?(x.dates||[]).length+' dates':x.date:x.duration}</span></div><div class="listing-footer"><div class="price">${isEvent?(x.min===0?'Free':'EGP '+x.min+'–'+x.max):full?'No openings':'Free to volunteer'}<small>${isEvent?'expected spend':full?'currently full':'no payment required'}</small></div><button class="btn small ${isEvent?'':'secondary'}" onclick="event.stopPropagation();openDetail('${x.id}')">${isEvent?'View event':'View details'}</button></div></div></article>`;}
 function val(id){return $(id)?.value||'';}
 function renderListings(){let a=items.filter(x=>x.kind==='animals'&&(animalType==='All animals'||x.type===animalType)&&(`${x.name} ${x.place} ${x.address}`).toLowerCase().includes(val('animalSearch').toLowerCase())&&(!val('animalLocation')||x.place===val('animalLocation'))&&(!val('animalStatus')||(val('animalStatus')==='need'?x.status==='need':x.status==='full')));let g=items.filter(x=>x.kind==='grandfriends'&&(grandType==='All'||x.type===grandType)&&(`${x.name} ${x.place} ${x.address}`).toLowerCase().includes(val('grandSearch').toLowerCase())&&(!val('grandLocation')||x.place===val('grandLocation'))&&(!val('grandStatus')||(val('grandStatus')==='need'?x.status==='need':x.status==='full')));let e=events.filter(x=>(eventType==='All'||x.type===eventType)&&(`${x.name} ${x.place} ${x.address} ${x.type}`).toLowerCase().includes(val('eventSearch').toLowerCase())&&(!val('eventLocation')||x.place===val('eventLocation'))&&(!val('eventBudget')||x.min<=Number(val('eventBudget'))));$('animalCards').innerHTML=a.length?a.map(listingCard).join(''):'<div class="empty" style="grid-column:1/-1">No shelters match those filters.</div>';$('grandCards').innerHTML=g.length?g.map(listingCard).join(''):'<div class="empty" style="grid-column:1/-1">No homes match those filters.</div>';$('eventCards').innerHTML=e.length?e.map(listingCard).join(''):'<div class="empty" style="grid-column:1/-1">No events match your filters.</div>';}
 
@@ -637,7 +695,7 @@ function decisionKey(id,i){return id+':'+i;}
 function pendingApplicants(id){return demoApplicants.filter((a,i)=>!applicantDecisions[decisionKey(id,i)]).length;}
 function renderHost(){
  const owned=events.filter(e=>e.host==='You'||ownedEventIds.includes(e.id));
- $('hostEvents').innerHTML=owned.length?owned.map(e=>{const p=pendingApplicants(e.id);return `<div class="host-event${activeHostEvent===e.id?' is-active':''}"><div style="display:flex;justify-content:space-between;gap:8px"><b>${esc(e.name)}</b><span class="status-tag ${e.spots>0?'open':'full'}">${e.spots>0?e.spots+' spots left':'Full'}</span></div><p class="muted" style="font-size:12px">${esc((e.dates||[e.date]).join(' · '))} · ${esc(e.place)}</p><div class="toggle-line"><span><b>Auto-accept requests</b><small class="muted" style="display:block">Accept eligible applicants automatically</small></span><input class="toggle" type="checkbox" aria-label="Auto-accept requests for ${esc(e.name)}" ${e.autoAccept?'checked':''} onchange="setAutoAccept('${e.id}',this.checked)"></div><button class="btn coral small" onclick="viewApplicants('${e.id}')">${p?`View requests (${p})`:'View decisions'}</button></div>`;}).join(''):'<div class="empty" style="grid-column:1/-1">You have not created an event yet. Create an event to receive and manage applications here.</div>';
+ $('hostEvents').innerHTML=owned.length?owned.map(e=>{const p=pendingApplicants(e.id);return `<div class="host-event${activeHostEvent===e.id?' is-active':''}"><div style="display:flex;justify-content:space-between;gap:8px"><b>${esc(e.name)}</b><span class="status-tag ${e.spots>0?'open':'full'}">${e.spots>0?e.spots+(e.spots===1?' spot left':' spots left'):'Full'}</span></div><p class="muted" style="font-size:12px">${esc((e.dates||[e.date]).join(' · '))} · ${esc(e.place)}</p><div class="toggle-line"><span><b>Auto-accept requests</b><small class="muted" style="display:block">Accept eligible applicants automatically</small></span><input class="toggle" type="checkbox" aria-label="Auto-accept requests for ${esc(e.name)}" ${e.autoAccept?'checked':''} onchange="setAutoAccept('${e.id}',this.checked)"></div><button class="btn coral small" onclick="viewApplicants('${e.id}')">${p?`View requests (${p})`:'View decisions'}</button></div>`;}).join(''):'<div class="empty" style="grid-column:1/-1">You have not created an event yet. Create an event to receive and manage applications here.</div>';
 }
 function viewApplicants(id){
  const e=getItem(id);if(!e)return;activeHostEvent=id;renderHost();
@@ -692,6 +750,49 @@ function selectChat(id,rerender=true){
 function openChatFor(id){const x=getItem(id);if(!x)return;chatThreads[id]=chatThreads[id]||[{mine:false,text:'Welcome! This is the group chat for '+x.name+'. Please coordinate here before meeting.'}];activeChat=id;go('chats');selectChat(id);}
 function renderChatMessages(){const msgs=chatThreads[activeChat]||[];$('messageArea').innerHTML=msgs.length?msgs.map(m=>`<div class="bubble ${m.mine?'mine':''}">${esc(m.text)}<small>${m.mine?'You':'Group member'}</small></div>`).join(''):'<div class="empty">No messages yet</div>';}
 function sendMessage(e){e.preventDefault();if(!activeChat)return;const input=$('chatInput'),t=input.value.trim();if(!t)return;chatThreads[activeChat].push({mine:true,text:t});input.value='';renderChatMessages();renderChats();}
+
+
+/* ===== Friends v5: branded dropdowns for every select ===== */
+function closeAllSelects(except){document.querySelectorAll('.fs-select.is-open').forEach(w=>{if(w!==except&&w._fsClose)w._fsClose();});}
+function syncSelects(){document.querySelectorAll('select[data-fs]').forEach(s=>s._fsSync&&s._fsSync());}
+function enhanceSelect(sel){
+ if(sel.dataset.fs)return;sel.dataset.fs='1';
+ const wrap=document.createElement('div');wrap.className='fs-select';
+ sel.parentNode.insertBefore(wrap,sel);wrap.appendChild(sel);
+ sel.classList.add('fs-hidden');sel.tabIndex=-1;sel.setAttribute('aria-hidden','true');
+ const btn=document.createElement('button');btn.type='button';btn.className='fs-trigger';
+ btn.setAttribute('aria-haspopup','listbox');btn.setAttribute('aria-expanded','false');
+ const lbl=sel.id&&document.querySelector(`label[for="${sel.id}"]`);
+ if(lbl){btn.id=sel.id+'-fs';lbl.htmlFor=btn.id;}else{const prev=sel.closest('.field')?.querySelector('label');btn.setAttribute('aria-label',prev?prev.textContent:(sel.options[0]?.text||'Choose'));}
+ btn.innerHTML='<span></span><i class="icon icon-chevron-down" aria-hidden="true"></i>';
+ wrap.insertBefore(btn,sel);
+ const list=document.createElement('ul');list.className='fs-list';list.setAttribute('role','listbox');list.hidden=true;wrap.appendChild(list);
+ let active=0;
+ sel._fsSync=()=>{btn.querySelector('span').textContent=sel.options[sel.selectedIndex]?.text||'';};
+ const mark=()=>[...list.children].forEach((li,i)=>li.classList.toggle('is-active',i===active));
+ const render=()=>{list.innerHTML='';[...sel.options].forEach((o,i)=>{const li=document.createElement('li');li.setAttribute('role','option');li.setAttribute('aria-selected',String(i===sel.selectedIndex));if(i===sel.selectedIndex)li.classList.add('is-selected');const t=document.createElement('span');t.textContent=o.text;li.appendChild(t);if(i===sel.selectedIndex)li.insertAdjacentHTML('beforeend','<i class="icon icon-check" aria-hidden="true"></i>');li.onpointerenter=()=>{active=i;mark();};li.onclick=()=>choose(i);list.appendChild(li);});mark();};
+ const open=()=>{closeAllSelects(wrap);active=Math.max(sel.selectedIndex,0);render();list.hidden=false;wrap.classList.add('is-open');btn.setAttribute('aria-expanded','true');list.children[active]?.scrollIntoView({block:'nearest'});};
+ const close=()=>{list.hidden=true;wrap.classList.remove('is-open');btn.setAttribute('aria-expanded','false');};
+ wrap._fsClose=close;
+ const choose=i=>{if(sel.selectedIndex!==i){sel.selectedIndex=i;sel.dispatchEvent(new Event('input',{bubbles:true}));sel.dispatchEvent(new Event('change',{bubbles:true}));}sel._fsSync();close();btn.focus();};
+ btn.addEventListener('click',()=>list.hidden?open():close());
+ btn.addEventListener('keydown',e=>{const n=sel.options.length;
+  if(e.key==='Escape'&&!list.hidden){e.preventDefault();e.stopPropagation();close();return;}
+  if(e.key==='Tab'){close();return;}
+  if(list.hidden&&['ArrowDown','ArrowUp','Enter',' '].includes(e.key)){e.preventDefault();open();return;}
+  if(list.hidden)return;
+  if(e.key==='ArrowDown'){e.preventDefault();active=Math.min(active+1,n-1);mark();list.children[active].scrollIntoView({block:'nearest'});}
+  else if(e.key==='ArrowUp'){e.preventDefault();active=Math.max(active-1,0);mark();list.children[active].scrollIntoView({block:'nearest'});}
+  else if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(active);}
+ });
+ sel.addEventListener('change',()=>sel._fsSync());
+ sel.addEventListener('focus',()=>btn.focus());
+ sel._fsSync();
+}
+document.querySelectorAll('select').forEach(enhanceSelect);
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('.fs-select'))closeAllSelects();});
+document.addEventListener('reset',()=>setTimeout(syncSelects),true);
+const baseOpenModal=openModal;openModal=function(id){baseOpenModal(id);syncSelects();};
 
 </script>
 </body>
