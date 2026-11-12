@@ -536,3 +536,43 @@
 .friends-showcase .showcase-hero-photo{background:transparent;overflow:visible;display:flex;align-items:center;justify-content:center}
 .friends-showcase .showcase-hero-photo:before{display:none}
 .friends-showcase .showcase-hero-photo img{width:100%;height:100%;object-fit:contain;object-position:center;border-radius:0;filter:none;mask-image:radial-gradient(ellipse 98% 98% at 50% 50%,#000 92%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 98% 98% at 50% 50%,#000 92%,transparent 100%)}
+
+
+/* Fixed navigation and shared Friends mark: keep chrome stationary while content scrolls. */
+.friends-showcase{padding-top:72px}
+.friends-showcase .showcase-nav{
+  position:fixed!important;top:0;left:0;right:0;width:100%;max-width:none;height:72px;
+  margin:0;padding:0 clamp(18px,3.2vw,54px);z-index:2000;
+  background:rgba(23,19,25,.96);backdrop-filter:blur(18px);
+  border-bottom:1px solid #ffffff18;
+}
+.friends-brand-mark{
+  width:29px;height:29px;display:inline-flex;align-items:center;justify-content:center;
+  flex:0 0 29px;color:var(--show-coral);background:transparent!important;
+}
+.friends-brand-mark svg{display:block;width:100%;height:100%}
+@media(max-width:760px){
+  .friends-showcase{padding-top:64px}
+  .friends-showcase .showcase-nav{height:64px;padding:0 18px}
+}
+
+/* /app: pin the entire sidebar to the viewport; only the main content scrolls. */
+@media(min-width:761px){
+  .app{grid-template-columns:250px minmax(0,1fr)}
+  .sidebar{
+    position:fixed!important;top:0;bottom:0;
+    left:max(calc((100vw - 1600px)/2),0px);
+    width:250px;height:100dvh!important;min-height:0;
+    z-index:1200;overflow-y:auto;overscroll-behavior:contain;
+  }
+  .main{grid-column:2;min-width:0}
+}
+@media(min-width:761px) and (max-width:1100px){
+  .app{grid-template-columns:210px minmax(0,1fr)}
+  .sidebar{left:0;width:210px}
+}
+@media(max-width:760px){
+  .app{display:block}
+  .sidebar{display:none!important}
+  .main{grid-column:auto}
+}
