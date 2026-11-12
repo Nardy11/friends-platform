@@ -930,3 +930,40 @@ button:disabled{cursor:not-allowed}
 
 /* sticky needs a non-scrolling ancestor: clip sideways overflow instead of hiding it */
 .friends-showcase{overflow:visible;overflow-x:clip}
+
+/* ===== Friends v8 ===== */
+/* Hero: the full brand cut-out, gently faded at the bottom edge */
+.friends-showcase .showcase-hero-photo{aspect-ratio:3/2}
+.friends-showcase .showcase-hero-photo .showcase-hero-artwork{mask-image:linear-gradient(#000 88%,transparent)!important;-webkit-mask-image:linear-gradient(#000 88%,transparent)!important}
+
+/* Brand photo (transparent) gets a warm backdrop wherever it sits in a frame */
+.app-show img[src*="friends-brand"]{object-fit:cover;object-position:center 22%;background:radial-gradient(ellipse at 50% 90%,color-mix(in srgb,var(--ph-coral) 45%,transparent),transparent 65%),linear-gradient(170deg,color-mix(in srgb,var(--ph-coral) 18%,var(--ph-panel)),var(--ph-bg))}
+.benefit-grid .b-memories>img{object-fit:contain;object-position:right bottom;background:radial-gradient(ellipse at 78% 95%,#ed927f55,transparent 55%),linear-gradient(120deg,#231b25,#3a2733)}
+.benefit-grid .b-memories:hover>img{transform:none}
+.auth-aside img[src*="friends-brand"]{height:260px;object-fit:contain;object-position:center bottom;background:radial-gradient(ellipse at 50% 100%,#ed927f55,transparent 60%),linear-gradient(160deg,#2a1f2c,#3a2733)}
+:root[data-theme='light'] .auth-aside img[src*="friends-brand"]{background:radial-gradient(ellipse at 50% 100%,#e8a89a77,transparent 60%),linear-gradient(160deg,#f3dcd5,#e6cfc8)}
+
+/* Phone: a real 3D body. Edge slices between the faces give it thickness while it spins */
+.ph-edge{position:absolute;inset:0;border-radius:46px;background:linear-gradient(90deg,#5b4a56,#2a2230 18%,#6a5864 50%,#2a2230 82%,#5b4a56)}
+.ph-front{transform:translateZ(7px)}
+.ph-rear{transform:rotateY(180deg) translateZ(7px)}
+
+/* Tap hints inside the phone */
+.ph-badge{position:absolute;top:calc(50% - 330px);left:50%;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:var(--show-coral);color:#fff;font:600 12px 'DM Sans',sans-serif;box-shadow:0 10px 24px color-mix(in srgb,var(--show-coral) 35%,transparent);animation:phBadge 2.4s ease-in-out infinite;white-space:nowrap}
+:root:not([data-theme='light']) .ph-badge{color:#27191a}
+.ph-badge:after{content:"";position:absolute;left:50%;bottom:-5px;width:10px;height:10px;background:inherit;transform:translateX(-50%) rotate(45deg);border-radius:2px}
+@keyframes phBadge{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-5px)}}
+.ph-pulse{position:relative;animation:phPulse 1.6s ease-out infinite}
+@keyframes phPulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ph-coral) 70%,transparent)}70%{box-shadow:0 0 0 11px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.ph-tabs .ph-pulse{animation:none}
+.ph-tabs .ph-pulse .icon{animation:phIconPulse 1.4s ease-in-out infinite;color:var(--ph-coral)}
+@keyframes phIconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+.ph-finger{position:absolute;right:12px;top:50%;margin-top:-14px;width:28px;height:28px;border-radius:50%;background:#fff;color:#1f171e;display:grid;place-items:center;font-size:14px;box-shadow:0 6px 16px rgba(0,0,0,.35);pointer-events:none;z-index:2;animation:phTap 1.6s ease-in-out infinite}
+.ph-tabs .ph-finger{right:auto;left:50%;top:-6px;margin:0 0 0 2px}
+@keyframes phTap{0%,100%{transform:translate(5px,6px)}40%,60%{transform:translate(0,0)}50%{transform:translate(0,0) scale(.82)}}
+@media(max-width:900px){.ph-badge{position:relative;top:auto;left:auto;transform:none;margin-bottom:14px;animation:none}.app-phone-slot{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){.ph-pulse,.ph-finger,.ph-badge,.ph-tabs .ph-pulse .icon{animation:none}}
+
+/* Branded scrollbars */
+html,.friends-showcase,.auth-page,.fs-list,.dp-panel{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--show-coral,#ed927f) 55%,transparent) transparent}
+:root[data-theme='light']{scrollbar-color:#a4473a88 transparent}

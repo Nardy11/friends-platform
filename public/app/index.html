@@ -442,6 +442,30 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 5px color
 .logout-btn:hover{background:color-mix(in srgb,var(--danger) 14%,transparent);color:var(--danger)}
 .logout-btn i{font-size:16px}
 .profile-logout{margin:26px 0 0;width:auto;display:inline-flex;border:1px solid var(--line);padding:9px 14px}
+
+/* ===== Friends v8: branded scrollbars, slim active marker, applicant profile page ===== */
+html,*{scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--coral) 55%,transparent) transparent}
+.nav button{position:relative}
+.nav button.active{box-shadow:none}
+.nav button.active:before{content:"";position:absolute;left:0;top:50%;width:3px;height:16px;transform:translateY(-50%);border-radius:0 3px 3px 0;background:var(--coral)}
+.nav button.active i{color:var(--coral)}
+:root[data-theme='light'] .nav button.active{box-shadow:none}
+
+.ap-backlink{display:inline-flex;align-items:center;gap:6px;padding:0;margin-bottom:16px}
+.ap-page{display:grid;grid-template-columns:320px minmax(0,1fr);gap:20px;align-items:start}
+.ap-card{position:sticky;top:20px;background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.ap-card .ap-cover{height:92px}
+.ap-card-body{padding:0 20px 18px}
+.ap-card .ap-head{flex-direction:column;align-items:center;text-align:center;gap:10px;margin-top:-46px}
+.ap-card .ap-head h2{justify-content:center}
+.ap-card .ap-request{justify-content:center;flex-wrap:wrap;text-align:center}
+.ap-card .ap-stats{grid-template-columns:repeat(3,1fr);margin-top:16px}
+.ap-card .ap-stats div{padding:10px 8px;text-align:center}
+.ap-card .ap-stats b{font-size:15px}
+.ap-card .ap-actions{position:static;margin:0;padding:14px 20px 18px;background:transparent}
+.ap-main{display:grid;gap:14px}
+.ap-main .ap-section{padding:18px 20px}
+@media(max-width:900px){.ap-page{grid-template-columns:1fr}.ap-card{position:static}}
 </style>
 </head>
 <body>
@@ -955,6 +979,47 @@ function logOut(){try{localStorage.removeItem('friends-demo-session');}catch(e){
  const you=$('page-you');
  if(you&&!you.querySelector('.logout-btn'))you.insertAdjacentHTML('beforeend','<button type="button" class="logout-btn profile-logout" onclick="logOut()"><i class="icon icon-log-out" aria-hidden="true"></i>Log out</button>');
 })();
+
+
+/* ===== Friends v8: applicant profile as its own page ===== */
+let currentApplicant=null;
+function ensureApplicantPage(){let pg=$('page-applicant');if(!pg){pg=document.createElement('section');pg.className='page';pg.id='page-applicant';$('page-host').after(pg);}return pg;}
+function viewApplicantProfile(i){
+ const a=demoApplicants[i];if(!a)return;currentApplicant=i;
+ const id=activeHostEvent,e=id?getItem(id):null,d=id?applicantDecisions[decisionKey(id,i)]:null;
+ const pg=ensureApplicantPage();
+ pg.innerHTML=`<button class="text-link ap-backlink" type="button" onclick="go('host')"><i class="icon icon-arrow-left" aria-hidden="true"></i>Back to event requests</button>
+ <div class="ap-page">
+  <aside class="ap-card"><div class="ap-cover"></div>
+   <div class="ap-card-body">
+    <div class="ap-head"><img src="${a.photo}" alt=""><div><h2 id="apName">${esc(a.name)}${a.verified?'<span class="ap-verified"><i class="icon icon-badge-check" aria-hidden="true"></i>Verified</span>':''}</h2><p>${a.age} · ${esc(a.gender)} · ${esc(a.education)} · ${esc(a.area||'')}</p></div></div>
+    ${e?`<p class="ap-request">${d?decisionTag(d):'<span class="status-tag pending">Pending</span>'}<span>Request to join ${esc(e.name)}</span></p>`:''}
+    <div class="ap-stats"><div><b>${a.attended}</b><span>${a.attended===1?'event':'events'}</span></div><div><b>${esc(a.attendance)}</b><span>showed up</span></div><div><b>${esc(a.memberSince)}</b><span>joined</span></div></div>
+   </div>
+   ${e&&!d?`<div class="ap-actions"><button type="button" class="btn decline" onclick="decideApplicant('${id}',${i},false)">Decline</button><button type="button" class="btn accept" onclick="decideApplicant('${id}',${i},true)">Accept</button></div>`:''}
+  </aside>
+  <div class="ap-main">
+   <section class="panel ap-section"><h3>About</h3><p>${esc(a.bio)}</p></section>
+   <section class="panel ap-section"><h3>Interests</h3><div class="ap-chips">${(a.interests||[]).map(x=>`<span>${esc(x)}</span>`).join('')}</div></section>
+   <section class="panel ap-section"><h3>Recent activity</h3>${(a.history||[]).length?`<ul class="ap-history">${a.history.map(h=>`<li><span class="ap-date">${esc(h.date)}</span><div><b>${esc(h.name)}</b><small>${esc(h.type)}</small></div></li>`).join('')}</ul>`:'<p class="muted">No events yet. This would be their first.</p>'}</section>
+   <section class="panel ap-section"><h3>What hosts say</h3>${(a.reviews||[]).length?a.reviews.map(r=>`<blockquote class="ap-review">${esc(r.text)}<cite>${esc(r.by)}</cite></blockquote>`).join(''):'<p class="muted">No reviews yet.</p>'}</section>
+  </div>
+ </div>`;
+ go('applicant');
+ document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page==='host'));
+}
+async function decideApplicant(id,i,accept){
+ const a=demoApplicants[i],e=getItem(id);if(!a||!e)return;
+ if(!accept){const ok=await confirmAction({title:`Decline ${a.name}?`,body:`${a.name} will be told their request to join ${e.name} was declined. This cannot be undone.`,confirmLabel:'Yes, decline',icon:'user-x'});if(!ok)return;}
+ else if(e.spots<=0){toast('This event is full. Free a spot before accepting more people.');return;}
+ applicantDecisions[decisionKey(id,i)]=accept?'accepted':'declined';
+ if(accept){e.spots=Math.max(0,e.spots-1);e.going=(e.going||0)+1;}
+ e.applications=pendingApplicants(id);
+ const onProfile=$('page-applicant')&&$('page-applicant').classList.contains('active');
+ viewApplicants(id);renderListings();
+ if(onProfile)viewApplicantProfile(i);
+ toast(a.name+(accept?' accepted.':' declined.'));
+}
 
 </script>
 </body>

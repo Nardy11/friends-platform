@@ -15,7 +15,7 @@ const stories=[
 const ways=[
  {title:'Animals',tag:'Give care. Get it back.',desc:'Volunteer at shelters, help with walks, feeding and care.',image:'https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=1100&q=90'},
  {title:'Grandfriends',tag:'Be there for someone.',desc:'Share a conversation, a game or a little time with older adults.',image:'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1100&q=90'},
- {title:'Events',tag:'Make a first memory.',desc:'Food, hangouts, parties, sports and new experiences.',image:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1100&q=90'}
+ {title:'Events',tag:'Make a first memory.',desc:'Food, hangouts, parties, sports and new experiences.',image:'/friends-platform/friends-brand-sm.webp'}
 ];
 // Four equal cards that drift around the edges of the hero photo.
 const heroCards=[
@@ -47,7 +47,7 @@ export default function Home(){const [story,setStory]=useState(0);return <main c
    <article><Icon name="hand-heart"/><h3>Make someone's day</h3><p>One hour means company for an older adult and care for an animal waiting for a home.</p></article>
    <article className="tinted"><Icon name="book-open"/><h3>Learn from experience</h3><p>Grandfriends share stories, recipes, skills and advice you will not find online.</p></article>
    <article><Icon name="users"/><h3>Make real friends</h3><p>Small groups and shared activities make it easy to keep talking after the first hello.</p></article>
-   <article className="b-memories has-img"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80" alt="Friends laughing together outdoors" loading="lazy"/><div><Icon name="mountain"/><h3>Memories and adventures</h3><p>Try pottery, skating, rooftop dinners and weekend trips with people who said yes too.</p></div></article>
+   <article className="b-memories has-img"><img src="/friends-platform/friends-hero-community.webp" alt="Three friends and a golden retriever laughing together" loading="lazy"/><div><Icon name="mountain"/><h3>Memories and adventures</h3><p>Try pottery, skating, rooftop dinners and weekend trips with people who said yes too.</p></div></article>
   </div>
  </section>
  <PhoneShowcase/>
