@@ -30,3 +30,81 @@
 .theme-toggle:hover{transform:translateY(-2px)}
 .theme-toggle span:first-child{font-size:17px;color:var(--coral)}
 @media(max-width:620px){.theme-toggle{right:14px;bottom:14px;padding:10px 13px}}
+
+
+/* Refined signup controls: soft surfaces, rounded geometry, and Friends accents */
+.auth-form select,
+.auth-form input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 50px;
+  border: 1px solid #e5dfd9;
+  border-radius: 15px;
+  background-color: #fffdfa;
+  color: var(--ink);
+  padding: 0 42px 0 15px;
+  box-shadow: 0 2px 8px rgba(41,37,42,.045);
+  transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+  cursor: pointer;
+}
+.auth-form select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23245e59' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+}
+.auth-form input[type="date"] {
+  color-scheme: light;
+  accent-color: var(--teal);
+}
+.auth-form input[type="date"]::-webkit-calendar-picker-indicator {
+  width: 18px;
+  height: 18px;
+  margin-right: -25px;
+  padding: 5px;
+  border-radius: 7px;
+  cursor: pointer;
+  opacity: .78;
+  filter: invert(29%) sepia(17%) saturate(1120%) hue-rotate(123deg) brightness(88%);
+}
+.auth-form select:hover,
+.auth-form input[type="date"]:hover {
+  border-color: #b8cbc4;
+  box-shadow: 0 3px 10px rgba(36,94,89,.07);
+}
+.auth-form select:focus-visible,
+.auth-form input[type="date"]:focus-visible {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 4px rgba(36,94,89,.12), 0 3px 10px rgba(36,94,89,.06);
+}
+.auth-form select option {
+  background: #fffdfa;
+  color: #29252a;
+}
+.auth-form select option:checked {
+  background: #e4efea;
+  color: #245e59;
+  font-weight: 700;
+}
+:root[data-theme='dark'] .auth-form select,
+:root[data-theme='dark'] .auth-form input[type="date"] {
+  color-scheme: dark;
+  background-color: #202927;
+  border-color: #43534e;
+  color: #f2eee9;
+  box-shadow: 0 2px 8px rgba(0,0,0,.14);
+}
+:root[data-theme='dark'] .auth-form select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2383b9ae' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+:root[data-theme='dark'] .auth-form input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(76%) sepia(16%) saturate(570%) hue-rotate(112deg) brightness(95%);
+}
+:root[data-theme='dark'] .auth-form select option {
+  background: #202927;
+  color: #f2eee9;
+}
+:root[data-theme='dark'] .auth-form select option:checked {
+  background: #294a43;
+  color: #c4e7dc;
+}
