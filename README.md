@@ -26,7 +26,7 @@ Open http://localhost:3000. Run `npm run build` to generate the static site in `
 Authentication pages are separate Next.js routes, not modals or popups.
 
 ## Demo authentication
-The forms use browser-local demo storage and are not production authentication. Do not use real passwords. Before launch, integrate a secure provider such as Supabase Auth or Firebase Authentication with server-side sessions, email verification, password reset, rate limiting, and data protection.
+The forms hash demo passwords with SHA-256 before storing demo accounts in this browser. This is still not production authentication: client-side hashing and local storage do not provide server-side identity, secure sessions, or account recovery. Do not use real passwords. Before launch, integrate a secure provider such as Supabase Auth or Firebase Authentication with server-side sessions, email verification, password reset, rate limiting, and data protection.
 
 ## Deployment
 The project uses Next.js static export. GitHub Pages cannot run a Next.js server, so the workflow builds `out/` and deploys the export through GitHub Pages. In repository Settings → Pages, select **GitHub Actions** as the source.
