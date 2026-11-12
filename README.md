@@ -1,31 +1,32 @@
-# Friends — Make room for connection
+# Friends — Next.js only
 
-Friends is a social platform prototype designed to help people build meaningful offline connections through animal shelter volunteering, visits to elderly care homes (Grandfriends), and shared social activities.
+Friends is a Next.js App Router application for building meaningful offline connection through animal shelter volunteering, intergenerational visits, and shared social activities.
 
-## Project structure
-- `app/` — Next.js App Router shell
-- `friends-volunteer-overview-v2.html` — prototype source retained in the repository
-- `public/form-overrides.css` — rounded theme-matched form controls
-- `public/form-overrides.js` — password visibility and live strength feedback
+## Stack
+- Next.js 15 App Router
+- React 19
+- Responsive React pages and shared CSS
+- Static export for static hosting
 
 ## Run locally
-Requires Node.js 20.9 or newer.
+Requires Node.js 20.9+.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000. Build the static site with `npm run build`.
+Open http://localhost:3000. Run `npm run build` to generate the static site in `out/`.
 
-## Password feedback
-The sign-up password meter checks five rules: at least eight characters, uppercase, lowercase, a number, and a special character. Password visibility controls are provided for sign-up and login. Authentication remains a browser-local demo, not production authentication. Do not use a real password. Before launch, integrate Supabase Auth, Firebase Authentication, or a secure backend with server-side sessions, email verification, and password recovery.
+## Routes
+- `/` — landing page and example activities
+- `/login/` — dedicated login page (email and password only)
+- `/signup/` — separate registration page with profile details, interests, password strength rules, confirmation, and terms
 
-## Date picker
-The date input and focus state are styled to match Friends. The opened calendar popup is browser/OS UI, so its internal shape and selection colors cannot be consistently customized with ordinary CSS. A fully branded calendar requires a custom date-picker component.
+Authentication pages are separate Next.js routes, not modals or popups.
 
-## GitHub Pages (branch publishing)
+## Demo authentication
+The forms use browser-local demo storage and are not production authentication. Do not use real passwords. Before launch, integrate a secure provider such as Supabase Auth or Firebase Authentication with server-side sessions, email verification, password reset, rate limiting, and data protection.
 
-This repository is configured for simple static hosting. In **Settings → Pages**, choose **Deploy from a branch**, select **main** and **/(root)**, then save. GitHub Pages will publish the root `index.html` and its referenced assets directly whenever you push to `main`; no custom Actions build workflow is needed. The repository must be public on GitHub Free.
-
-The current root page is a static HTML prototype. If the app is later converted to a full Next.js project, run `npm run build` locally and publish the generated static export files to the Pages source branch; GitHub Pages cannot run a Next.js server or API routes.
+## Deployment
+The project uses Next.js static export. GitHub Pages cannot run a Next.js server, so the workflow builds `out/` and deploys the export through GitHub Pages. In repository Settings → Pages, select **GitHub Actions** as the source.
