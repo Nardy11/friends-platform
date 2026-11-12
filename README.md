@@ -24,7 +24,8 @@ The sign-up password meter checks five rules: at least eight characters, upperca
 ## Date picker
 The date input and focus state are styled to match Friends. The opened calendar popup is browser/OS UI, so its internal shape and selection colors cannot be consistently customized with ordinary CSS. A fully branded calendar requires a custom date-picker component.
 
-## GitHub Pages
-A GitHub Actions workflow builds the Next.js static export and publishes `out/`. In GitHub, open **Settings → Pages** and select **GitHub Actions** as the deployment source. Once the workflow succeeds, the expected site URL is https://nardy11.github.io/friends-platform/.
+## GitHub Pages (branch publishing)
 
-See [DESIGN.md](./DESIGN.md) for the visual system and accessibility notes.
+This repository is configured for simple static hosting. In **Settings → Pages**, choose **Deploy from a branch**, select **main** and **/(root)**, then save. GitHub Pages will publish the root `index.html` and its referenced assets directly whenever you push to `main`; no custom Actions build workflow is needed. The repository must be public on GitHub Free.
+
+The current root page is a static HTML prototype. If the app is later converted to a full Next.js project, run `npm run build` locally and publish the generated static export files to the Pages source branch; GitHub Pages cannot run a Next.js server or API routes.
