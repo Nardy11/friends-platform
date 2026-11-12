@@ -438,6 +438,10 @@ input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 5px color
 :root[data-theme='light'] .btn.accept:hover{background:#246a3e}
 :root[data-theme='light'] .btn.decline{background:transparent;color:var(--no);border-color:var(--no)}
 :root[data-theme='light'] .btn.decline:hover{background:var(--no);color:#fff}
+.logout-btn{display:flex;align-items:center;gap:10px;width:100%;margin-top:4px;padding:9px 11px;border:0;border-radius:11px;background:transparent;color:var(--muted);font:500 13px 'DM Sans',sans-serif;text-align:left;cursor:pointer}
+.logout-btn:hover{background:color-mix(in srgb,var(--danger) 14%,transparent);color:var(--danger)}
+.logout-btn i{font-size:16px}
+.profile-logout{margin:26px 0 0;width:auto;display:inline-flex;border:1px solid var(--line);padding:9px 14px}
 </style>
 </head>
 <body>
@@ -941,6 +945,16 @@ const baseOpenBudget=openBudget;openBudget=function(){$('budgetRange').value=bud
 })();
 const baseRenderCalendar=renderCalendar;
 renderCalendar=function(){baseRenderCalendar();const y=calendarCursor.getFullYear(),m=calendarCursor.getMonth();if(y===2026&&m===10){const t=[...document.querySelectorAll('#calendarGrid .cal-day')].find(b=>b.textContent==='12');if(t)t.classList.add('is-today');}};
+
+
+/* Log out: end the demo session and return to the landing page */
+function logOut(){try{localStorage.removeItem('friends-demo-session');}catch(e){}window.location.assign('/friends-platform/');}
+(function(){
+ const side=document.querySelector('.sidebar .side-bottom');
+ if(side&&!side.querySelector('.logout-btn'))side.insertAdjacentHTML('beforeend','<button type="button" class="logout-btn" onclick="logOut()"><i class="icon icon-log-out" aria-hidden="true"></i>Log out</button>');
+ const you=$('page-you');
+ if(you&&!you.querySelector('.logout-btn'))you.insertAdjacentHTML('beforeend','<button type="button" class="logout-btn profile-logout" onclick="logOut()"><i class="icon icon-log-out" aria-hidden="true"></i>Log out</button>');
+})();
 
 </script>
 </body>
